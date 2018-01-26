@@ -1,0 +1,11 @@
+package F21ASE_Stage1;
+
+public class FlightCode {
+	private String flightCode;
+	
+	//Create an unique format style RY8606
+	public FlightCode(String flightCode){
+		this.flightCode = flightCode;
+	}
+
+}

@@ -1,0 +1,16 @@
+package F21ASE_Stage1;
+
+public class MainTest {
+
+	public static void main(String[] args) {
+		Ticket ticket1 = new Ticket("A7A0", "RY8606");
+		Passenger passenger1 = new Passenger("Jean", "Michel");
+		
+		Booking booking = new Booking(passenger1, ticket1);
+		
+		booking.getPassenger();
+		booking.getTicket();
+
+	}
+
+}

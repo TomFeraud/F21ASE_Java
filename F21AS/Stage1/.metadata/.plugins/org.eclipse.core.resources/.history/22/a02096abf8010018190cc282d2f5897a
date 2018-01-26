@@ -1,0 +1,10 @@
+package F21ASE_Stage1;
+
+public class FlightCode {
+	private String flightCode;
+	
+	public FlightCode(String flightCode){
+		this.flightCode = flightCode;
+	}
+
+}

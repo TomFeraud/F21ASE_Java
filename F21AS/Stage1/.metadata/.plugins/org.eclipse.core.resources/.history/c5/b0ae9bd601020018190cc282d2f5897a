@@ -1,0 +1,98 @@
+package F21ASE_Stage1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class BookingList {
+	// String is the key: the unique booking reference code
+	private TreeMap<String, Booking> bookingList;
+
+	public BookingList() {
+		bookingList = new TreeMap<String, Booking>();
+	}
+
+	public void printSize() {
+		System.out.println(bookingList.size());
+	}
+
+	public void addBooking(Booking booking) {
+		bookingList.put(booking.getTicket().getBookingReferenceCode(), booking);
+	}
+
+	private void processLine(String line) {
+		try {
+			String parts[] = line.split(",");
+			String uniqueRef = parts[0];
+			// If the unique booking reference code is missing
+			if (uniqueRef.equals("")) {
+				String error = "The booking reference code on the line:" + line + " is missing";
+				System.err.println(error);
+			} else {
+				Passenger passenger = new Passenger(parts[1]);
+				FlightCode flightCode = new FlightCode(parts[2]);
+				Ticket ticket = new Ticket(uniqueRef, flightCode);
+				
+				// create Booking object and add it to the list
+				Booking booking = new Booking(passenger, ticket);
+				 boolean checkedIn = Boolean.parseBoolean(parts[3]);
+				this.addBooking(booking);
+			}
+
+		}
+		// for these two formatting errors, ignore lines in error and try and
+		// carry on
+		// this catches trying to convert a String to an integer
+		catch (NumberFormatException nfe) {
+			String error = "Number conversion error in '" + line + "'  - " + nfe.getMessage();
+			System.err.println(error);
+		}
+		// this catches missing items if only one or two items
+		// other omissions will result in other errors
+		catch (ArrayIndexOutOfBoundsException air) {
+			String error = "Not enough items in line:" + line + " index position : " + air.getMessage();
+			System.err.println(error);
+		}
+		// if the name is incomplete or absent in our .csv an error message is
+		// displayed
+		catch (StringIndexOutOfBoundsException e) {
+			String error = "The name part of the line: " + line + " is incomplete. Please add the missing information";
+			System.err.println(error);
+
+		}
+
+	}
+
+	public void readFile(String filename) {
+		try {
+			File file = new File(filename);
+			Scanner scanner = new Scanner(file);
+			while (scanner.hasNextLine()) {
+				// read first line and process it
+				String inputLine = scanner.nextLine();
+				if (inputLine.length() != 0) {// ignored if blank line
+					processLine(inputLine);
+				}
+			}
+		}
+		// if the file is not found, stop with system exit
+		catch (FileNotFoundException fnf) {
+			System.out.println(filename + " not found ");
+			System.exit(0);
+		}
+	}
+
+	public void printBookingList() {
+		System.out.println(bookingList.values());
+	}
+
+	public TreeMap<String, Booking> getBookingList() {
+		return bookingList;
+	}
+
+	public void setBookingList(TreeMap<String, Booking> bookingList) {
+		this.bookingList = bookingList;
+	}
+
+}

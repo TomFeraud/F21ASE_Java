@@ -1,0 +1,30 @@
+package F21ASE_Stage1;
+
+public class Baggage {
+	private float weight;
+	private float dimension;
+
+	public Baggage(float weight, float dimension) {
+		this.weight = weight;
+		this.dimension = dimension;
+		weight = 0;
+		dimension = 0;
+	}
+
+	public float getWeight() {
+		return weight;
+	}
+
+	public void setWeight(float weight) {
+		this.weight = weight;
+	}
+
+	public float getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(float dimension) {
+		this.dimension = dimension;
+	}
+
+}

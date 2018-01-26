@@ -1,0 +1,34 @@
+package F21ASE_Stage1;
+
+public class Baggage {
+	private double weight;
+	private double dimension;
+
+	public Baggage(double weight, double dimension) {
+		this.weight = weight;
+		this.dimension = dimension;
+		weight = 0.0;
+		dimension = 0.0;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+	public double getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(double dimension) {
+		this.dimension = dimension;
+	}
+	
+	public String toString() {
+		return "\n Baggage weight: " +getWeight() +"kg, baggage dimension :" +getDimension() +"cm^3";
+	}
+
+}

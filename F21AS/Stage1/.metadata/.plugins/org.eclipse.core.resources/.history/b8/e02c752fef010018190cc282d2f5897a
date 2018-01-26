@@ -1,0 +1,19 @@
+package F21ASE_Stage1;
+
+public class Passenger {
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	
+	/**
+	 * Constructor of Passenger with a first name & a last name
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Passenger(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.middleName = "";
+		this.lastName = lastName;
+	}
+
+}

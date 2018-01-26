@@ -1,0 +1,14 @@
+package F21ASE_Stage1;
+
+public class Plane {
+	private double maxNbrPassengers;
+	private float maxBaggageWeight;
+	private float maxBaggageVolume;
+
+	public Plane(double maxNbrPassengers, float maxBaggageWeight, float maxBaggageVolume) {
+		this.maxNbrPassengers = maxNbrPassengers;
+		this.maxBaggageWeight = maxBaggageWeight;
+		this.maxBaggageVolume = maxBaggageVolume;
+	}
+
+}

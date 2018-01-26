@@ -1,0 +1,18 @@
+package F21ASE_Stage1;
+
+public class MainTest {
+
+	public static void main(String[] args) {
+		FlightCode flightCode1 = new FlightCode("FR1286");
+		Ticket ticket1 = new Ticket("GETYDH23", flightCode1);
+		Passenger passenger1 = new Passenger("Jean", "Michel");
+		
+		Booking booking = new Booking(passenger1, ticket1);
+		
+		System.out.println(booking.getPassenger().getFullName());
+		System.out.println(booking.getTicket().getFlightCode().getFlightCode() + " " + booking.getTicket().getBookingReferenceCode());
+		
+		BookingList bl= new BookingList();
+	}
+
+}

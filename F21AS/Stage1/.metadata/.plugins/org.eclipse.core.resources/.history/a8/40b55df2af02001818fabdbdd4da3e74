@@ -1,0 +1,17 @@
+package F21ASE_Stage1;
+
+public class Manager {
+	private BookingList bookingList;
+
+	public Manager() {
+		bookingList = new BookingList();
+	}
+
+	
+	public void run(){
+		bookingList.readFile("booking.txt");
+		bookingList.printSize();
+		bookingList.printBookingList();
+		bookingList.hasPassengerBooked("Degrandi","AD2404");
+	}
+}

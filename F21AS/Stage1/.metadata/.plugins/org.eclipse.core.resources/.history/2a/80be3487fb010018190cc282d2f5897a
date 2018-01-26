@@ -1,0 +1,37 @@
+package F21ASE_Stage1;
+
+import java.util.TreeMap;
+
+
+public class BookingList {
+	//String is the key: the unique booking reference code
+	private TreeMap<String,Booking> bookingList;
+
+	public BookingList() {
+		bookingList = new TreeMap<String,Booking>();
+	}
+	
+	
+	public void addBooking(Booking booking){
+		bookingList.put(booking.getTicket().getBookingReferenceCode(), booking);
+	}
+	
+	public void printBookingList(){
+		System.out.println(bookingList);
+	}
+	
+	
+
+	public TreeMap<String, Booking> getBookingList() {
+		return bookingList;
+	}
+
+	public void setBookingList(TreeMap<String, Booking> bookingList) {
+		this.bookingList = bookingList;
+	}
+	
+	public void toString(){
+		
+	}
+	
+}

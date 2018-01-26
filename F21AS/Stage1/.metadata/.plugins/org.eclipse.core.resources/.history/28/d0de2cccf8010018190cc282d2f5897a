@@ -1,0 +1,28 @@
+package F21ASE_Stage1;
+
+public class Ticket {
+	private String bookingReferenceCode;
+	private String flightCode;
+
+	public Ticket(String bookingReferenceCode, String flightCode) {
+		this.bookingReferenceCode = bookingReferenceCode;
+		this.flightCode = flightCode;
+	}
+
+	public String getBookingReferenceCode() {
+		return bookingReferenceCode;
+	}
+
+	public void setBookingReferenceCode(String bookingReferenceCode) {
+		this.bookingReferenceCode = bookingReferenceCode;
+	}
+
+	public String getFlightCode() {
+		return flightCode;
+	}
+
+	public void setFlightCode(String flightCode) {
+		this.flightCode = flightCode;
+	}
+
+}
