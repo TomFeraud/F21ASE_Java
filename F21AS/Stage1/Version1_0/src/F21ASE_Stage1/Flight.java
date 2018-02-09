@@ -1,8 +1,5 @@
 package F21ASE_Stage1;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Flight {
     private String departure,
             destination,

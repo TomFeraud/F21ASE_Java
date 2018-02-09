@@ -4,6 +4,7 @@ public class FlightCode {
 	private String flightCode;
 	
 	//Create an unique format style FR8606
+	//As for the booking reference code.
 	public FlightCode(String flightCode){
 		this.flightCode = flightCode;
 	}

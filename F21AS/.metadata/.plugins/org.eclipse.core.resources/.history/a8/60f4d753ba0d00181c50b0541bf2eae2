@@ -1,0 +1,23 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import F21ASE_Stage1.Passenger;
+
+public class TestMyPassenger {
+
+	@Before
+	public void setUp() {
+		Passenger passenger1 = new Passenger ("Jean", "Michel", "Saumon");
+	}
+
+	@Test
+	public void testgetFirstName() {
+		String test1 = "Pierre";
+
+	}
+
+}

@@ -1,6 +1,9 @@
 package F21ASE_Stage1;
 
-import java.util.Map;
+/**
+ * @author Tom Feraud
+ * @version 1.0
+ */
 
 public class Passenger {
 	private String firstName;
