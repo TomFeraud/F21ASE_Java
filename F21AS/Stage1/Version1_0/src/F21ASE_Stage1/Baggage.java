@@ -1,5 +1,6 @@
 package F21ASE_Stage1;
 
+
 public class Baggage {
     private double weight;
     private double dimensionX;
@@ -18,6 +19,7 @@ public class Baggage {
     public double calculateDimT(double dimensionX, double dimensionY, double dimensionZ)
     {
     	dimensionT= dimensionX * dimensionY * dimensionZ;
+    	dimensionT= Math.round(dimensionT*100.0)/100.0;
     	return dimensionT;
     }
     
@@ -30,13 +32,14 @@ public class Baggage {
     	else
     	{
     		excessBagFee = (weight - 20) * 5; //£5 per extra kg
+    		excessBagFee = Math.round(excessBagFee *100.0)/100.0;
     	}
     	return excessBagFee;
     }
     
     
     public double getWeight() {
-        return weight;
+        return Math.round(weight *100.0)/100.0;
     }
     
     public void setWeight(double weight) {
@@ -49,6 +52,7 @@ public class Baggage {
     
     public void setDimensionX(double dimensionX) {
         this.dimensionX = dimensionX;
+  
     }
     
     public double getDimensionY() {
