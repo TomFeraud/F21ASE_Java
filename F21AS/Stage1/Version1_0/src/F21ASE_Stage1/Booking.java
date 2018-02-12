@@ -78,7 +78,7 @@ public class Booking {
 	public String toString() {
 		return "\n Booking reference code: '" + ticket.getBookingReferenceCode() + "', Name: '"
 				+ passenger.getFullName() + "', Flight Code: '" + ticket.getFlightCode().getFlightCode()
-				+ "', cheked in?: " + this.hasCheckedIn() + "\n";
+				+ "', checked in?: " + this.hasCheckedIn() + "\n";
 		// + "baggage: " +passenger.getBaggage().getDimension();
 	}
 
