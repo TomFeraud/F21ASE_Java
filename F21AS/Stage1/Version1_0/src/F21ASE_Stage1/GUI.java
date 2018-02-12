@@ -144,8 +144,14 @@ public class GUI extends JFrame implements ActionListener {
 							Double.parseDouble(baggageDimXField.getText()),
 							Double.parseDouble(baggageDimYField.getText()), Double.parseDouble(baggageDimZField.getText()));
 					passenger.setBaggage(baggage);
-					JOptionPane.showMessageDialog(baggageOk, "Thank you.");
-					//afficher excess fee
+					
+					if (Double.parseDouble(baggageWeightField.getText())>20){
+						JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in." +"\nFor a baggage of this weight, you will have to pay an excess fee of £" 
+					+Baggage.calculateBagFee(Double.parseDouble(baggageWeightField.getText())) );
+					}
+					else{
+						JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in.");
+					};
 					System.out.println(passenger.getBaggage());	
 				}
 				catch(Exception baggage){

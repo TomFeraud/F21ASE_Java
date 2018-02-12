@@ -7,7 +7,7 @@ public class Baggage {
     private double dimensionY;
     private double dimensionZ;
     private double dimensionT;
-    public static double excessBagFee;
+    private static double excessBagFee;
     
     //faire javadoc + les tests
     
@@ -32,7 +32,7 @@ public class Baggage {
     	return dimensionT;
     }
     
-    public double calculateBagFee(double weight)
+    public static double calculateBagFee(double weight)
     {
     	if (weight < 20)
     	{
