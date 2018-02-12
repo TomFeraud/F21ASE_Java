@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+//quand baggage validé -> checkin à true dans booking.txt
+//					   -> les champs se re-vident
+
+
 public class GUI extends JFrame implements ActionListener {
 
 	private BookingList bookingList;
@@ -13,10 +17,16 @@ public class GUI extends JFrame implements ActionListener {
 	final JFrame checkNotOk = new JFrame();
 	final JFrame baggageOk = new JFrame();
 	final JFrame baggageNotOK = new JFrame();
+	
+	//will be added in some of the Jlabels for aesthetic purposes 
+	public static final String Space = "              ";
 
 	JTextField lastNameField, bookingRefCodeField, baggageWeightField;
+	
 	JTextField baggageDimXField, baggageDimYField, baggageDimZField;
-	JButton searchBookingButton, addBaggageButton;
+	JButton validateCheckInButton, closeKioskButton;
+	
+	
 
 	// public GUI(BookingList bookingList, FlightList flightList)
 	public GUI(BookingList bookingList) {
@@ -24,15 +34,17 @@ public class GUI extends JFrame implements ActionListener {
 
 		// set up title of the window
 		this.setTitle("Check in kiosk");
-
+	
 		setupNorthPanel();
 		setupCenterPanel();
+		setupSouthPanel();
 
 		// setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
 
 		// pack and set visible
 		pack();
 		setVisible(true);
+		setResizable(false);
 	}
 
 	private void setupNorthPanel() {
@@ -48,15 +60,11 @@ public class GUI extends JFrame implements ActionListener {
 		bookingRefCodeField = new JTextField(7);
 		bookingPanel.add(bookingRefCodeField);
 		
-		searchBookingButton = new JButton("Check booking");
-		bookingPanel.add(searchBookingButton);
 		
-		// specify action when button is pressed
-		searchBookingButton.addActionListener(this);
 
 		// set up the whole north panel containing the 2 previous elements
 		JPanel northPanel = new JPanel();
-		northPanel.setLayout(new GridLayout(2, 1));
+		northPanel.setLayout(new GridLayout(1, 1));
 		northPanel.add(bookingPanel);
 		this.add(northPanel, BorderLayout.NORTH);
 
@@ -67,31 +75,27 @@ public class GUI extends JFrame implements ActionListener {
 		JPanel baggagePanel = new JPanel();
 		baggagePanel.setLayout(new GridLayout(7, 1));
 		
+		baggagePanel.add(new JLabel("Please enter any baggage information"));
+		baggagePanel.add(new JLabel(" below:"));
+		
 		baggagePanel.add(new JLabel("Baggage weight (kg):"));
 		baggageWeightField = new JTextField(5);
 		baggagePanel.add(baggageWeightField);
 		
-		baggagePanel.add(new JLabel("Baggage dimensions (cm):"));
+		baggagePanel.add(new JLabel("Baggage height (cm):"));
 		baggageDimXField = new JTextField(5);
 		baggagePanel.add(baggageDimXField);
 
-		//fix this	
-		baggagePanel.add(new JLabel(""));
+			
+		baggagePanel.add(new JLabel(Space +"width:"));
 		baggageDimYField = new JTextField(5);
 		baggagePanel.add(baggageDimYField);
 		
-		//fix this
-		baggagePanel.add(new JLabel(""));
+		
+		baggagePanel.add(new JLabel(Space +"length:"));
 		baggageDimZField = new JTextField(5);
 		baggagePanel.add(baggageDimZField);
 		
-		
-		
-		addBaggageButton = new JButton("Add baggage");
-		baggagePanel.add(addBaggageButton);
-		// specify action when button is pressed
-		addBaggageButton.addActionListener(this);
-
 		// set up the whole center panel containing the 2 previous elements
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(1, 1));
@@ -99,24 +103,40 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(centerPanel, BorderLayout.CENTER);
 
 	}
+	
+	private void setupSouthPanel() {
+
+		JPanel checkInOrClosePanel = new JPanel();
+		checkInOrClosePanel.setLayout(new GridLayout(3, 1));
+		
+		validateCheckInButton = new JButton("Validate Check In");
+		checkInOrClosePanel.add(validateCheckInButton);
+		// specify action when button is pressed
+		validateCheckInButton.addActionListener(this);
+		
+		//add a break between the two buttons to avoid clicking the wrong one
+		checkInOrClosePanel.add(new JLabel(""));
+		
+		closeKioskButton = new JButton("Close Kiosk");
+		checkInOrClosePanel.add(closeKioskButton);
+		// specify action when button is pressed
+		closeKioskButton.addActionListener(this);
+
+		// set up the whole center panel containing the 2 previous elements
+		JPanel southPanel = new JPanel();
+		southPanel.setLayout(new GridLayout(1, 1));
+		southPanel.add(checkInOrClosePanel);
+		this.add(southPanel, BorderLayout.SOUTH);
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String lastName = lastNameField.getText();
-		String bookingCode = bookingRefCodeField.getText();
-		
-		if (e.getSource() == searchBookingButton) {
-			if (bookingList.hasPassengerBooked(lastName, bookingCode)) {
-				JOptionPane.showMessageDialog(checkOk, "Thank you for checking in, " + lastName + 
-						". Please add your baggage information below.");
+		String lastName = lastNameField.getText().toUpperCase();
+		String bookingCode = bookingRefCodeField.getText().toUpperCase();
 
-			} else {
-				JOptionPane.showMessageDialog(checkNotOk,
-						"Sorry, we could not find you. Please re-enter your details.");
-			}
-		}
-		
-		if (e.getSource() == addBaggageButton)
+		if (e.getSource() == validateCheckInButton)
+			
 			if (bookingList.hasPassengerBooked(lastName, bookingCode)) {
 				Passenger passenger = bookingList.findByBookingReference(bookingCode);
 				try{
@@ -125,6 +145,7 @@ public class GUI extends JFrame implements ActionListener {
 							Double.parseDouble(baggageDimYField.getText()), Double.parseDouble(baggageDimZField.getText()));
 					passenger.setBaggage(baggage);
 					JOptionPane.showMessageDialog(baggageOk, "Thank you.");
+					//afficher excess fee
 					System.out.println(passenger.getBaggage());	
 				}
 				catch(Exception baggage){
@@ -138,6 +159,10 @@ public class GUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(checkNotOk,
 						"Sorry, we could not find you. Please re-enter your details.");
 			}
+		
+		if (e.getSource() == closeKioskButton) {
+			System.exit(0);
+		}
 	}
 
 }

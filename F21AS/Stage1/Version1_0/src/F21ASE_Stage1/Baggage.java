@@ -7,8 +7,17 @@ public class Baggage {
     private double dimensionY;
     private double dimensionZ;
     private double dimensionT;
-    private double excessBagFee;
+    public static double excessBagFee;
     
+    //faire javadoc + les tests
+    
+    /**
+     * Constructor of Baggage with the weight and dimensions
+     * @param weight
+     * @param dimensionX
+     * @param dimensionY
+     * @param dimensionZ
+     */
     public Baggage(double weight, double dimensionX, double dimensionY, double dimensionZ) {
         this.weight = weight;
         this.dimensionX = dimensionX;
