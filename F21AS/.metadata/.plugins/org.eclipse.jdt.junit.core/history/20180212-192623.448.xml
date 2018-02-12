@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestMyPassenger" project="Stage1" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.TestMyPassenger" time="0.001">
+    <testcase name="testSetFirstName" classname="tests.TestMyPassenger" time="0.001"/>
+    <testcase name="testgetFirstName" classname="tests.TestMyPassenger" time="0.0"/>
+    <testcase name="testGetInitials" classname="tests.TestMyPassenger" time="0.0"/>
+  </testsuite>
+</testrun>

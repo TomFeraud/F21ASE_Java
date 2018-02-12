@@ -1,0 +1,17 @@
+package tests;
+
+import java.util.TreeMap;
+
+import F21ASE_Stage1.Booking;
+import F21ASE_Stage1.BookingList;
+
+public class TestMyBookingList {
+
+	private TreeMap<String, Booking> bookingList;
+
+	@Before
+	public void setUp() {
+		bookingList = new TreeMap<String, Booking>();
+	}
+
+}
