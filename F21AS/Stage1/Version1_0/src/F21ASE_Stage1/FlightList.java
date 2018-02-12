@@ -1,5 +1,8 @@
 package F21ASE_Stage1;
 
+////////////////////////////
+//// /!\ change the comment about cabin/accomodation.
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

@@ -5,6 +5,11 @@ package F21ASE_Stage1;
  * @version 1.0
  */
 
+/*
+ * 
+ */
+
+
 public class Passenger {
 	private String firstName;
 	private String middleName;
@@ -18,9 +23,9 @@ public class Passenger {
 	 * @param lastName
 	 */
 	public Passenger(String firstName, String lastName) {
-		this.firstName = firstName;
+		this.firstName = firstName.toUpperCase();
 		this.middleName = "";
-		this.lastName = lastName;
+		this.lastName = lastName.toUpperCase();
 	}
 
 	/**
@@ -31,9 +36,9 @@ public class Passenger {
 	 * @param lName
 	 */
 	public Passenger(String fName, String mName, String lName) {
-		firstName = fName;
-		middleName = mName;
-		lastName = lName;
+		firstName = fName.toUpperCase();
+		middleName = mName.toUpperCase();
+		lastName = lName.toUpperCase();
 	}
 
 	/**
@@ -67,7 +72,7 @@ public class Passenger {
 	 * @param firstName            String
 	 */
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstName = firstName.toUpperCase();
 	}
 
 	/**
@@ -86,7 +91,7 @@ public class Passenger {
 	 *            String
 	 */
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName = lastName.toUpperCase();
 	}
 
 	/**
