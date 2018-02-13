@@ -5,7 +5,6 @@ package F21ASE_Stage1;
  * @version 1.0
  */
 
-
 public class Passenger {
 	private String firstName;
 	private String middleName;
@@ -61,11 +60,12 @@ public class Passenger {
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	/**
 	 * Changes the first name to the value provided in the parameter
 	 * 
-	 * @param firstName            String
+	 * @param firstName
+	 *            String
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName.toUpperCase();
@@ -147,23 +147,15 @@ public class Passenger {
 	 * @return String containing the initials of the Passenger
 	 */
 	public String getInitials() {
-		String name = getFullName();
-		// this array will contains the initials of our name
-		char[] initials = new char[3];
-		initials[2] = ' ';
-		int counter = 0;
-		// we add a space before the first name in order to use the char " " as
-		// a separation
-		name = " " + name;
-		for (int i = 0; i < name.length(); i++) {
-			char c1 = name.charAt(i);
-			// if there is a space
-			if (c1 == ' ') {
-				// the next character is an initial
-				initials[counter] = name.charAt(i + 1);
-				counter++;
-			}
+		char firstInitial = this.firstName.charAt(0);
+		if (!(this.middleName.equalsIgnoreCase(""))) { 				//if there is no middle name
+			char middleInitial = this.middleName.charAt(0);
+			char lastInitial = this.lastName.charAt(0);
+			return firstInitial + "." + middleInitial + "." + lastInitial;
+		} else {													//if there is a middle name
+			char lastInitial = this.lastName.charAt(0);
+			return firstInitial + "." + lastInitial;
 		}
-		return "" + initials[0] + "." + initials[1] + "." + initials[2];
+
 	}
 }

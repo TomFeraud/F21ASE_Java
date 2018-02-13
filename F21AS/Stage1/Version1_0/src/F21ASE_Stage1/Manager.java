@@ -27,13 +27,8 @@ public class Manager {
 		bookingList.readFile("booking.txt");
 		bookingList.printSize();
 		bookingList.printBookingList();
-		if (bookingList.hasPassengerBooked("Degrandi", "AD2404")) {
-			// System.out.println(bookingList.findByBookingReference("AD2404"));
-			// Baggage baggage1 = new Baggage(10.0,0);
-			// bookingList.findByBookingReference("AD2404").setBaggage(baggage1);
-			// System.out.println(bookingList.findByBookingReference("AD2404").getBaggage());
-		}
 
+		//////////////////////////////////////////////
 		// Tom: for Sidi:
 		flightList.populate();
 		System.out.println(flightList.getTotalNumberofFlights());

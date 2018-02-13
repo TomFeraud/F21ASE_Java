@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="F21ASE_Stage1.Passenger"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.BookingList"/>
 <fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.FlightCode"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.Ticket"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.Passenger"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
 </qualifiedTypeNameHistroy>
