@@ -153,6 +153,14 @@ public class GUI extends JFrame implements ActionListener {
 						JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in.");
 					};
 					System.out.println(passenger.getBaggage());	
+					
+					//re-initialize all the fields to check in next customer
+					baggageDimXField.setText("");
+					baggageDimYField.setText("");
+					baggageDimZField.setText("");
+					lastNameField.setText(""); 
+					bookingRefCodeField.setText(""); 
+					baggageWeightField.setText("");
 				}
 				catch(Exception baggage){
 					JOptionPane.showMessageDialog(baggageNotOK,
