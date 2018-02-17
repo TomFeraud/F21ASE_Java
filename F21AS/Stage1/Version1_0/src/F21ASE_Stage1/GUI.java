@@ -5,8 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 //quand baggage validé -> checkin à true dans booking.txt
-//					   -> les champs se re-vident
-
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -22,16 +20,14 @@ public class GUI extends JFrame implements ActionListener {
 	public static final String Space = "              ";
 
 	JTextField lastNameField, bookingRefCodeField, baggageWeightField;
-	
 	JTextField baggageDimXField, baggageDimYField, baggageDimZField;
 	JButton validateCheckInButton, closeKioskButton;
 	
 	
-
 	// public GUI(BookingList bookingList, FlightList flightList)
 	public GUI(BookingList bookingList) {
 		this.bookingList = bookingList;
-
+		
 		// set up title of the window
 		this.setTitle("Check in kiosk");
 	
@@ -167,6 +163,10 @@ public class GUI extends JFrame implements ActionListener {
 							"Please enter correct information for your baggage's weight and dimension");
 				}
 				
+				/*
+				Booking booking= Booking(passenger, ticket);
+				booking.setCheckedIn(true);
+				*/
 			} 
 			
 			else {

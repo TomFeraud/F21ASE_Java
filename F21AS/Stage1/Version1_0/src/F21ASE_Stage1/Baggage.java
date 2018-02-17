@@ -25,6 +25,14 @@ public class Baggage {
         this.dimensionZ = dimensionZ;
     }
     
+    /**
+     * Calculates the total dimension of the baggage
+     * and rounds it up to two decimal points
+     * @param dimensionX
+     * @param dimensionY
+     * @param dimensionZ
+     * @return the total dimension
+     */
     public double calculateDimT(double dimensionX, double dimensionY, double dimensionZ)
     {
     	dimensionT= dimensionX * dimensionY * dimensionZ;
@@ -32,6 +40,12 @@ public class Baggage {
     	return dimensionT;
     }
     
+    /**
+     * Calculates the excess fee the customer will have to pay
+     * according to their baggage's weight
+     * @param weight
+     * @return excess bag fee
+     */
     public static double calculateBagFee(double weight)
     {
     	if (weight < 20)
@@ -46,36 +60,67 @@ public class Baggage {
     	return excessBagFee;
     }
     
-    
+    /**
+     * get the baggage weight
+     * @return baggage weight rounded up to two decimals
+     */
     public double getWeight() {
         return Math.round(weight *100.0)/100.0;
     }
     
+    /**
+     * sets the weight to the parameter in the ()
+     * @param weight
+     */
     public void setWeight(double weight) {
         this.weight = weight;
     }
     
+    /**
+     * get dimensionX
+     * @return dimensionX
+     */
     public double getDimensionX() {
         return dimensionX;
     }
     
+    /**
+     * sets dimensionX
+     * @param dimensionX
+     */
     public void setDimensionX(double dimensionX) {
         this.dimensionX = dimensionX;
   
     }
     
+    /**
+     * get dimensionY
+     * @return dimensionY
+     */
     public double getDimensionY() {
         return dimensionY;
     }
     
+    /**
+     * sets dimensionY
+     * @param dimensionY
+     */
     public void setDimensionY(double dimensionY) {
         this.dimensionY = dimensionY;
     }
     
+    /**
+     * get dimensionZ
+     * @return dimensionZ
+     */
     public double getDimensionZ() {
         return dimensionZ;
     }
     
+    /**
+     * sets dimensionZ
+     * @param dimensionZ
+     */
     public void setDimensionZ(double dimensionZ) {
         this.dimensionZ = dimensionZ;
     }
