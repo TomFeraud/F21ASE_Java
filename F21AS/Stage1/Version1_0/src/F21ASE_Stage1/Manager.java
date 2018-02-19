@@ -21,27 +21,17 @@ public class Manager {
 	 * Launches the GUI, reads the file to fill the lists
 	 */
 	public void run() {
-		GUI gui = new GUI(bookingList);
-		gui.setVisible(true);
-
 		bookingList.readFile("booking.txt");
 		bookingList.printSize();
 		bookingList.printBookingList();
 
-		//////////////////////////////////////////////
-		// Tom: for Sidi:
-		flightList.populate();
+		flightList.readFile("flight.txt");
 		System.out.println(flightList.getTotalNumberofFlights());
-		FlightCode codeTest = new FlightCode("SA999");
-		Flight testFlight = new Flight("Glasgow", "London", "Scottish Air", codeTest, 20, 10, 10);
-		flightList.addFlight(testFlight);
-		System.out.println(flightList.getTotalNumberofFlights());
-		// WORK:
-		System.out.println(flightList.findByFlightCode(codeTest).getDeparture());
-		// DO NOT WORK:
-		FlightCode codeTestRY = new FlightCode("RY576");
-		System.out.println(flightList.findByFlightCode(codeTestRY).getDeparture());
-		// Because you compare 2 objects (work only here with codeTest because
-		// same object = same address in memory)
+		flightList.printFlightList();
+
+		GUI gui = new GUI(bookingList, flightList);
+		gui.setVisible(true);
 	}
+
+
 }

@@ -148,11 +148,11 @@ public class Passenger {
 	 */
 	public String getInitials() {
 		char firstInitial = this.firstName.charAt(0);
-		if (!(this.middleName.equalsIgnoreCase(""))) { 				//if there is no middle name
+		if (!(this.middleName.equalsIgnoreCase(""))) { 				//if there is a middle name
 			char middleInitial = this.middleName.charAt(0);
 			char lastInitial = this.lastName.charAt(0);
 			return firstInitial + "." + middleInitial + "." + lastInitial;
-		} else {													//if there is a middle name
+		} else {													//if there is no middle name
 			char lastInitial = this.lastName.charAt(0);
 			return firstInitial + "." + lastInitial;
 		}

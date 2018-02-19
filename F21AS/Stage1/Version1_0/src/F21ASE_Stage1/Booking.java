@@ -1,5 +1,9 @@
 package F21ASE_Stage1;
 
+import F21ASE_Stage1.Flight;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author Tom Feraud
  * @version 1.0
@@ -7,18 +11,31 @@ package F21ASE_Stage1;
 
 public class Booking {
 	private Passenger passenger;
-	private Ticket ticket;
+	private String bookingReferenceCode;
+	private String flightCode;
 	private boolean checkedIn;
 
 	/**
-	 * Constructor of Booking with a Passenger and a Ticket
-	 * 
+	 * Constructor of Booking with a Passenger, booking Ref. code, and flight code
+     *
+     * threw exceptions if bookingReferenceCode or flightCode has invalid format
+     *
 	 * @param passenger
-	 * @param ticket
+	 * @param bookingReferenceCode
+	 * @param flightCode
 	 */
-	public Booking(Passenger passenger, Ticket ticket) {
+	public Booking(Passenger passenger, String bookingReferenceCode, String flightCode) {
 		this.passenger = passenger;
-		this.ticket = ticket;
+        if (!validateBookingReferenceCode(bookingReferenceCode, this.passenger)) {
+            throw new InvalidFormatException("Booking Reference code - "+ bookingReferenceCode);
+        } else {
+            this.bookingReferenceCode = bookingReferenceCode;
+        }
+        if (!Flight.flightCodeValidation(flightCode)) {
+            throw new InvalidFormatException("Flight Code - "+flightCode);
+        } else {
+            this.flightCode = flightCode;
+        }
 	}
 
 	/**
@@ -39,24 +56,13 @@ public class Booking {
 		this.passenger = passenger;
 	}
 
-	/**
-	 * Returns the ticket of the booking
-	 * 
-	 * @return ticket
-	 */
-	public Ticket getTicket() {
-		return ticket;
+	public String getFlightCode() {
+		return this.flightCode;
 	}
 
-	/**
-	 * Sets the booking' ticket
-	 * 
-	 * @param ticket
-	 */
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	public String getBookingReferenceCode() {
+		return bookingReferenceCode;
 	}
-
 	/**
 	 * Checks if a passenger according to his ticket has checked in or not yet
 	 * 
@@ -76,10 +82,26 @@ public class Booking {
 	}
 
 	public String toString() {
-		return "\n Booking reference code: '" + ticket.getBookingReferenceCode() + "', Name: '"
-				+ passenger.getFullName() + "', Flight Code: '" + ticket.getFlightCode().getFlightCode()
+		return "\n Booking reference code: '" + this.bookingReferenceCode + "', Name: '"
+				+ passenger.getFullName() + "', Flight Code: '" + this.flightCode
 				+ "', checked in?: " + this.hasCheckedIn() + "\n";
 		// + "baggage: " +passenger.getBaggage().getDimension();
 	}
 
+    /**
+     * Validate the booking ref. code format
+     *
+     * Correct format should be the passenger's initials in CAP, plus 8 random digits
+     *
+     * @param bookingReferenceCode
+     * @param passenger
+     * @return
+     */
+	private boolean validateBookingReferenceCode(String bookingReferenceCode, Passenger passenger) {
+	    String initials = passenger.getInitials();
+        Pattern p = Pattern.compile("^["+initials+"]{2}\\d{8}$");
+        Matcher m = p.matcher(bookingReferenceCode);
+
+        return m.find(); // returns true if matches, otherwise false
+    }
 }

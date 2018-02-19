@@ -1,14 +1,13 @@
 package F21ASE_Stage1;
 
-////////////////////////////
-//// /!\ change the comment about cabin/accomodation.
-
+import javax.swing.*;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class FlightList {
 	private ArrayList<Flight> flightList;
@@ -18,7 +17,7 @@ public class FlightList {
 	}
 
 	public boolean addFlight(Flight f) {
-		FlightCode flightCode = f.getFlightCode();
+		String flightCode = f.getFlightCode();
 		Flight inList = this.findByFlightCode(flightCode);
 		if (inList == null) {
 			flightList.add(f);
@@ -27,18 +26,14 @@ public class FlightList {
 		return false;
 	}
 
-	// populate the cabin by reading a text file
-	public void populate() {
-		this.readFile("flight.txt");
-	}
-
-	private void readFile(String filename) {
+    /**
+     * read flight information
+     * @param filename
+     */
+	public void readFile(String filename) {
 		try {
 			File f = new File(filename);
 			Scanner scanner = new Scanner(f);
-			// read the first line of the input file to get the accommodation
-			// type
-			// String cabin_type = scanner.nextLine();
 
 			while (scanner.hasNextLine()) {
 				// read first line and process it
@@ -56,24 +51,27 @@ public class FlightList {
 		}
 	}
 
+	/**
+	 * Process flight information
+	 * @param line
+	 */
 	private void processLine(String line) {
 		String parts[] = line.split(",");// split string into items
 
 		try {
 			String carrier = parts[0];
-			FlightCode flightCode = new FlightCode(parts[1]);
+			String flightCode = parts[1];
 			String departure = parts[2];
 			String destination = parts[3];
 			int maxNbrPassengers = Integer.parseInt(parts[4]);
 			double maxBaggageWeight = Double.parseDouble(parts[5]);
 			double maxBaggageVolume = Double.parseDouble(parts[6]);
 
-			if (flightCodeValidation(flightCode)) {
-				// create flight object
-				Flight f = new Flight(departure, destination, carrier, flightCode, maxNbrPassengers, maxBaggageWeight,
+            // create flight object
+            Flight f = new Flight(departure, destination, carrier, flightCode, maxNbrPassengers, maxBaggageWeight,
 						maxBaggageVolume);
-				this.addFlight(f);
-			}
+            this.addFlight(f);
+
 		}
 		// this catches trying to convert a String to an integer
 		catch (NumberFormatException nfe) {
@@ -86,21 +84,14 @@ public class FlightList {
 			String error = "Not enough items in : '" + line + "' index position : " + air.getMessage();
 			System.out.println(error);
 		}
+		catch (InvalidFormatException ife) {
+            System.out.println(ife.getMessage());
+        }
 	}
 
-	public Flight findByFlightCode(FlightCode flightCode) {
+	public Flight findByFlightCode(String flightCode) {
 		for (Flight f : flightList) {
-			// THIS WILL WORK
-			// if(f.getFlightCode().getFlightCode().equals(flightCode.getFlightCode()))
-
-			if (f.getFlightCode().equals(flightCode)) // Tom: incorrect use of
-														// equals method, you
-														// compare a FlightCode
-														// with a String (need
-														// to implements new
-														// methods?) : will
-														// return null in all
-														// cases here
+			if (f.getFlightCode().equals(flightCode))
 			{
 				return f;
 			}
@@ -108,24 +99,42 @@ public class FlightList {
 		return null;
 	}
 
-	/**
-	 * Validate the flight code
-	 *
-	 * Correct flight code should start with 2 capital letters following by 2-4
-	 * numbers
-	 *
-	 * @param flightCode
-	 * @return boolean
-	 */
-	public boolean flightCodeValidation(FlightCode flightCode) {
-		Pattern p = Pattern.compile("^[A-Z]{2}\\d{3,4}$");
-		Matcher m = p.matcher(flightCode.getFlightCode());
-
-		return m.find(); // returns true if flight code matches, otherwise false
-	}
-
+    /**
+     * Get the size of the flight array list
+     * @return
+     */
 	public int getTotalNumberofFlights() {
 		return flightList.size();
 	}
 
+	public void printFlightList() {
+        for (Flight f:flightList) {
+            System.out.println(f.toString());
+        }
+    }
+
+    public void printReport(String filePath) {
+        try {
+            //the file path
+            File file = new File(filePath);
+
+            //if the file not exist create one
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Flight f: flightList) {
+                bw.write(f.printReport());
+                System.out.print(f.printReport());
+            }
+            //close BufferedWriter
+            bw.close();
+            //close FileWriter
+            fw.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

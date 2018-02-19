@@ -35,20 +35,20 @@ public class BookingList {
 	 * @param booking
 	 */
 	public void addBooking(Booking booking) {
-		bookingList.put(booking.getTicket().getBookingReferenceCode(), booking);
+		bookingList.put(booking.getBookingReferenceCode(), booking);
 	}
 
 	/**
-	 * Find via the booking reference code a booking
+	 * Find a booking by the booking reference code
 	 * 
 	 * @param bookingRefCode
 	 * @return Passenger
 	 */
-	public Passenger findByBookingReference(String bookingRefCode) {
+	public Booking findByBookingReference(String bookingRefCode) {
 		for (Map.Entry<String, Booking> entry : bookingList.entrySet()) {
 			String key = entry.getKey();
 			if (key.equals(bookingRefCode)) {
-				return bookingList.get(key).getPassenger();
+				return bookingList.get(key);
 			}
 		}
 		return null;
@@ -117,11 +117,9 @@ public class BookingList {
 				System.err.println(error);
 			} else {
 				Passenger passenger = new Passenger(parts[1]);
-				FlightCode flightCode = new FlightCode(flightCodeString);
-				Ticket ticket = new Ticket(uniqueRef, flightCode);
 
 				// create Booking object and add it to the list
-				Booking booking = new Booking(passenger, ticket);
+				Booking booking = new Booking(passenger, uniqueRef, flightCodeString);
 				boolean checkedIn = Boolean.parseBoolean(parts[3]);
 				booking.setCheckedIn(checkedIn);
 				this.addBooking(booking);
@@ -134,6 +132,8 @@ public class BookingList {
 		} catch (java.lang.StringIndexOutOfBoundsException siooe) {
 			System.out.println("The passenger name is incomplete in line " + line
 					+ ".\nPlease insert a booking as: (bookingReferenceCode,Passenger,FlightCode,false)");
+		} catch (InvalidFormatException ife) {
+			System.out.println(ife.getMessage());
 		}
 	}
 

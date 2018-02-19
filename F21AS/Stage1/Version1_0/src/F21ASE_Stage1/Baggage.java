@@ -7,7 +7,7 @@ public class Baggage {
     private double dimensionY;
     private double dimensionZ;
     private double dimensionT;
-    private static double excessBagFee;
+    private double excessBagFee;
     
     //faire javadoc + les tests
     
@@ -43,10 +43,9 @@ public class Baggage {
     /**
      * Calculates the excess fee the customer will have to pay
      * according to their baggage's weight
-     * @param weight
      * @return excess bag fee
      */
-    public static double calculateBagFee(double weight)
+    public double calculateBagFee()
     {
     	if (weight < 20)
     	{
@@ -90,7 +89,6 @@ public class Baggage {
      */
     public void setDimensionX(double dimensionX) {
         this.dimensionX = dimensionX;
-  
     }
     
     /**
@@ -124,21 +122,24 @@ public class Baggage {
     public void setDimensionZ(double dimensionZ) {
         this.dimensionZ = dimensionZ;
     }
-    
-    
+
+    /**
+     * get dimensionT
+     * @return dimensionT
+     */
+    public double getDimensionT() {return dimensionT;}
+
+    /**
+     * get extra baggage fee
+     * @return excessBagFee
+     */
+    public double getExcessBagFee() {return excessBagFee;}
+
     public String toString() {
-    	if (calculateBagFee(weight)>0)
-    	{
-    		return "\n Baggage's weight: " +getWeight() +"kg, baggage dimension:" 
-            		+calculateDimT(dimensionX, dimensionY, dimensionZ) +"cm^3, excess baggage fee: £" 
-            		+calculateBagFee(weight);
-    	}
-    	else
-    	{
-    		return "\n Baggage's weight: " +getWeight() +"kg, baggage dimension:" 
-            		+calculateDimT(dimensionX, dimensionY, dimensionZ) +"cm^3";
-    	}
-        
+        return "\n Baggage's weight: " +getWeight() +"kg, baggage dimension:"
+                +calculateDimT(dimensionX, dimensionY, dimensionZ) +"M^3, excess baggage fee: £"
+                +this.excessBagFee;
+
     }
     
 }
