@@ -1,3 +1,15 @@
-French Air,FR1286,Edinburgh,London,200,100,100
-French Air,FR178,Marseille,Edinburgh,200,100,100
-Ryan Air,RYX576,Marseille,Edinburgh,200,100,100
+Air France,FR1286,Edinburgh,London,200,600,150
+Air France,FR178,Marseille,Edinburgh,200,600,150
+Ryan Air,RYX576,Marseille,Edinburgh,170,100,100
+British Airways,BA324,Edinburgh,London,200,500,150
+American Airlines,AA544,Houston,Edinburgh,230,600,170
+British Airways,BA3543,Dublin, Edinburgh,200,500,150
+FlyBE,FB654,Edinburgh,Paris,170,100,100
+Singapore Airlines,SA644,Edinburgh,Cleveland,220,700,190
+Air China,AA543,Edinburgh,Beijing,225,600,400
+Icelandair,AI444,Minneapolis,Edinburgh,180,400,400
+British Airways,BA543,Edinburgh,Nice,200,500,150
+Brussels Airlines,BB567,Edinburgh,Brussels,220,550,145
+Air China,AA567,Beijing,Edinburgh,225,600,400
+Brussels Airlines,BB554,Edinburgh,Toronto,220,550,145
+Royal Air Maroc,RM3245,Algiers,Edinburgh,200,500,150
