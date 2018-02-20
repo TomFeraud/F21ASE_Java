@@ -36,9 +36,9 @@ public class TestMyBaggage {
 		double bagFee1 = 0.0;
 		double bagFee2 = 50.0;
 		double bagFee3 = 0.5;
-		double testMethod1 = Baggage.calculateBagFee(baggage1.getWeight());
-		double testMethod2 = Baggage.calculateBagFee(baggage2.getWeight());
-		double testMethod3 = Baggage.calculateBagFee(baggage3.getWeight());
+		double testMethod1 = baggage1.calculateBagFee();
+		double testMethod2 = baggage2.calculateBagFee();
+		double testMethod3 = baggage3.calculateBagFee();
     	assertEquals(bagFee1,testMethod1,0.001);
     	assertEquals(bagFee2,testMethod2,0.001);
     	assertEquals(bagFee3,testMethod3,0.001);

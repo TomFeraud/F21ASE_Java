@@ -8,9 +8,7 @@ public class Baggage {
     private double dimensionZ;
     private double dimensionT;
     private double excessBagFee;
-    
-    //faire javadoc + les tests
-    
+        
     /**
      * Constructor of Baggage with the weight and dimensions
      * @param weight

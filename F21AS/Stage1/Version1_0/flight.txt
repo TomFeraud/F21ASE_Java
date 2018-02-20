@@ -1,3 +1,0 @@
-French Air,FR1286,Edinburgh,London,200,100,100
-French Air,FR178,Marseille,Edinburgh,200,100,100
-Ryan Air,RYX576,Marseille,Edinburgh,200,100,100
