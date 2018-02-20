@@ -24,7 +24,8 @@ public class GUI extends JFrame implements ActionListener {
     JTextField lastNameField, bookingRefCodeField, baggageWeightField;
     JTextField baggageDimXField, baggageDimYField, baggageDimZField;
     JButton validateCheckInButton, closeKioskButton;
-
+    
+    
 
     // public GUI(BookingList bookingList, FlightList flightList)
     public GUI(BookingList bookingList, FlightList flightList)
@@ -34,7 +35,10 @@ public class GUI extends JFrame implements ActionListener {
 
         // set up title of the window
         this.setTitle("Check in kiosk");
-
+        
+        //the user can't close the GUI using the x button
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
 		//set up the three panels
         setupNorthPanel();
         setupCenterPanel();
