@@ -79,7 +79,7 @@ public class Flight {
     /**
      * Validate the flight code
      *
-     * Correct flight code should start with 2 capital letters following by 2-4
+     * Correct flight code should start with 2 capital letters following by 3-4
      * numbers
      *
      * @param flightCode
