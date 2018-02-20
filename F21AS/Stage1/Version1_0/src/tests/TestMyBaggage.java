@@ -24,9 +24,9 @@ public class TestMyBaggage {
     public void testcalculateDimT(){
     	double dimensionT1 = 2940.89;
     	double dimensionT2 = 80.0;
-    	double testMethod1 = baggage1.calculateDimT(baggage1.getDimensionX(),baggage1.getDimensionY(),baggage1.getDimensionZ());
+    	double testMethod1 = baggage1.calculateDimT();
     	assertEquals(dimensionT1,testMethod1,0.001);
-    	double testMethod2 = baggage2.calculateDimT(baggage2.getDimensionX(),baggage2.getDimensionY(),baggage2.getDimensionZ());
+    	double testMethod2 = baggage2.calculateDimT();
     	assertEquals(dimensionT2,testMethod2,0.001);
     }
     

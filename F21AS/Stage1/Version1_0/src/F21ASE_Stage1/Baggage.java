@@ -26,18 +26,14 @@ public class Baggage {
     /**
      * Calculates the total dimension of the baggage
      * and rounds it up to two decimal points
-     * @param dimensionX
-     * @param dimensionY
-     * @param dimensionZ
      * @return the total dimension
      */
-    public double calculateDimT(double dimensionX, double dimensionY, double dimensionZ)
+    public double calculateDimT()
     {
     	dimensionT= dimensionX * dimensionY * dimensionZ;
     	dimensionT= Math.round(dimensionT*100.0)/100.0;
     	return dimensionT;
     }
-    
     /**
      * Calculates the excess fee the customer will have to pay
      * according to their baggage's weight
@@ -135,7 +131,7 @@ public class Baggage {
 
     public String toString() {
         return "\n Baggage's weight: " +getWeight() +"kg, baggage dimension:"
-                +calculateDimT(dimensionX, dimensionY, dimensionZ) +"M^3, excess baggage fee: £"
+                +calculateDimT() +"M^3, excess baggage fee: £"
                 +this.excessBagFee;
 
     }

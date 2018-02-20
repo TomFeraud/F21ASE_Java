@@ -177,36 +177,45 @@ public class GUI extends JFrame implements ActionListener {
                                 Double.parseDouble(baggageDimYField.getText()),
                                 Double.parseDouble(baggageDimZField.getText()));
                         double extraFee = baggage.calculateBagFee();
-    					//if the baggage is over the weight limit/there's a fee, shows this message
-                        if (extraFee > 0) {
-                            JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in." + "\n" +
-                                    "For a baggage of this weight, you will have to pay an excess fee of £"
-                                    + extraFee);
-                        } 
-                        //if there's no problem with the baggage, shows this message
-                        else {
-                            JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in.");
-                        }
                         
-                        // add baggage to passenger
-                        passenger.setBaggage(baggage);
-                        System.out.println(passenger.getBaggage());
-                        // add passenger to corresponding flight
-                        flight.addPassenger(passenger);
-                        //shows the passenger as "checked in"
-                        booking.setCheckedIn(true);
-                  
-                        //re-initialize all the fields to check in next customer
-                        baggageDimXField.setText("");
-                        baggageDimYField.setText("");
-                        baggageDimZField.setText("");
-                        lastNameField.setText("");
-                        bookingRefCodeField.setText("");
-                        baggageWeightField.setText("");
+                        //if the baggage is oversize (more than 50m^3)
+                        if (baggage.calculateDimT()>50.0){
+                        	JOptionPane.showMessageDialog(baggageNotOK, "Your baggage is oversize");
+                        }
+                        //if the baggage isn't oversize
+                        else{
+                        	 
+        					//if the baggage is over the weight limit/there's a fee, shows this message
+                            if (extraFee > 0) {
+                                JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in." + "\n" +
+                                        "For a baggage of this weight, you will have to pay an excess fee of £"
+                                        + extraFee);
+                            } 
+                            //if there's no problem with the baggage, shows this message
+                            else {
+                                JOptionPane.showMessageDialog(baggageOk, "Thank you for checking in.");
+                            }
+                            
+                            // add baggage to passenger
+                            passenger.setBaggage(baggage);
+                            System.out.println(passenger.getBaggage());
+                            // add passenger to corresponding flight
+                            flight.addPassenger(passenger);
+                            //shows the passenger as "checked in"
+                            booking.setCheckedIn(true);
+                      
+                            //re-initialize all the fields to check in next customer
+                            baggageDimXField.setText("");
+                            baggageDimYField.setText("");
+                            baggageDimZField.setText("");
+                            lastNameField.setText("");
+                            bookingRefCodeField.setText("");
+                            baggageWeightField.setText("");
+                        }
+                       
                     } 
     				//if there's a problem with the information entered by the user (empty field, not a double)
                     catch (Exception ex) {
-                      //  ex.printStackTrace();
                      //   JOptionPane.showMessageDialog(baggageNotOK, ex.getMessage());
     					JOptionPane.showMessageDialog(baggageNotOK,
     							"Please enter correct information for your baggage's weight and dimension");
