@@ -12,6 +12,9 @@ import java.util.Scanner;
 public class FlightList {
 	private ArrayList<Flight> flightList;
 
+	/**
+	 * constructor
+	 */
 	public FlightList() {
 		flightList = new ArrayList<Flight>();
 	}
@@ -89,6 +92,11 @@ public class FlightList {
         }
 	}
 
+	/**
+	 * find flight by flight code
+	 * @param flightCode
+	 * @return
+	 */
 	public Flight findByFlightCode(String flightCode) {
 		for (Flight f : flightList) {
 			if (f.getFlightCode().equals(flightCode))
@@ -113,6 +121,10 @@ public class FlightList {
         }
     }
 
+	/**
+	 * print flight reports
+	 * @param filePath
+	 */
     public void printReport(String filePath) {
         try {
             //the file path
