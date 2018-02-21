@@ -125,6 +125,8 @@ public class FlightList {
 
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
+        	bw.write("Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
+        	System.out.println("Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
             for (Flight f: flightList) {
                 bw.write(f.printReport());
                 System.out.print(f.printReport());

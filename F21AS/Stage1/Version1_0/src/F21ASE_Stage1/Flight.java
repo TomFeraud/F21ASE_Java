@@ -138,8 +138,19 @@ public class Flight {
     }
 
     public String printReport() {
-        return this.flightCode + " ---- Total Number of Passenger:  " + passengersList.size() + ", Total Baggage Weight: "
-                + this.getTotalBaggageWeight() + "KG, Total Baggage Volume: " + this.getTotalBaggageVolume() +
-                "M^3, Extra Fee: £" +this.getTotalExtraFee()+", Capacity Exceeds: " + this.checkCapacity() + "\n";
+    	
+    	String Table = "";
+    	Table += String.format("%-20s", this.flightCode);
+    	Table += String.format("%-22d", passengersList.size());
+    	Table += String.format("%-23s", this.getTotalBaggageWeight());
+    	Table += String.format("%-21s", this.getTotalBaggageVolume());
+    	Table += String.format("%-18s", this.getTotalExtraFee());
+    	Table += String.format("%-4s", this.checkCapacity());
+    	Table += "\n";
+    	return Table;
+    	
+    //   return this.flightCode + " ---- Total Number of Passenger:  " + passengersList.size() + ", Total Baggage Weight: "
+      //          + this.getTotalBaggageWeight() + "KG, Total Baggage Volume: " + this.getTotalBaggageVolume() +
+        //        "M^3, Extra Fee: £" +this.getTotalExtraFee()+", Capacity Exceeds: " + this.checkCapacity() + "\n";
     }
 }

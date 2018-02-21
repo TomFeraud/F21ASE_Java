@@ -1,14 +1,16 @@
-FR1286 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-FR178 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-BA324 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-AA544 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-BA3543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-FB654 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-SA644 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-AA543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-AI444 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-BA543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-BB567 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-AA567 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-BB554 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
-RM3245 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+Check in kiosk report
+Flight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? 
+FR1286              1                     32.0                   2.0                  60.0              None
+FR178               0                     0.0                    0.0                  0.0               None
+BA324               0                     0.0                    0.0                  0.0               None
+AA544               0                     0.0                    0.0                  0.0               None
+BA3543              0                     0.0                    0.0                  0.0               None
+FB654               0                     0.0                    0.0                  0.0               None
+SA644               0                     0.0                    0.0                  0.0               None
+AA543               1                     2.0                    1.0                  0.0               None
+AI444               0                     0.0                    0.0                  0.0               None
+BA543               0                     0.0                    0.0                  0.0               None
+BB567               1                     2.0                    1.0                  0.0               None
+AA567               0                     0.0                    0.0                  0.0               None
+BB554               0                     0.0                    0.0                  0.0               None
+RM3245              0                     0.0                    0.0                  0.0               None

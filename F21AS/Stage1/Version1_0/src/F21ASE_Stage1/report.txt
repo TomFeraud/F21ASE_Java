@@ -1,2 +1,0 @@
-FR1286 ---- Total Number of Passenger:  1, Total Baggage Weight: 10.0KG, Total Baggage Volume: 4500.0M^3, Extra Fee: £0.0, Capacity Exceeds: Baggage Volume Exceeds	
-FR178 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
