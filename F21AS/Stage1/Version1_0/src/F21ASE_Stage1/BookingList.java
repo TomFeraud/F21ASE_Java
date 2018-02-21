@@ -42,21 +42,22 @@ public class BookingList {
 	 * Find a booking by the booking reference code
 	 * 
 	 * @param bookingRefCode
-	 * @return Passenger
+	 * @return Booking
 	 */
 	public Booking findByBookingReference(String bookingRefCode) {
 		for (Map.Entry<String, Booking> entry : bookingList.entrySet()) {
 			String key = entry.getKey();
 			if (key.equals(bookingRefCode)) {
 				return bookingList.get(key);
+
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Check if a passenger, according to his last name and booking reference
-	 * code has booked (used in the GUI)
+	 * Check if a passenger, according to his last name and booking reference code
+	 * has booked (used in the GUI)
 	 * 
 	 * @param lastName
 	 * @param bookingRefCode
@@ -74,8 +75,8 @@ public class BookingList {
 	}
 
 	/**
-	 * Read the element of the text file provided in parameter and fill the
-	 * booking list by calling processLine method
+	 * Read the element of the text file provided in parameter and fill the booking
+	 * list by calling processLine method
 	 * 
 	 * @param filename
 	 */
@@ -125,16 +126,18 @@ public class BookingList {
 				this.addBooking(booking);
 			}
 		}
+		
+
 		// this catches missing item(s) for a booking
 		catch (ArrayIndexOutOfBoundsException aieoobe) {
-			System.out.println("Not enough item in line: " + line
+			System.err.println("Not enough item in line: " + line
 					+ ".\nPlease insert a booking as: (bookingReferenceCode,Passenger,FlightCode,false)");
 		} catch (java.lang.StringIndexOutOfBoundsException siooe) {
-			System.out.println("The passenger name is incomplete in line " + line
+			System.err.println("The passenger name is incomplete in line " + line
 					+ ".\nPlease insert a booking as: (bookingReferenceCode,Passenger,FlightCode,false)");
 		} catch (InvalidFormatException ife) {
-			System.out.println(ife.getMessage());
-		}
+			System.err.println(ife.getMessage());
+		} 
 	}
 
 	/**

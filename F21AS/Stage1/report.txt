@@ -1,0 +1,14 @@
+FR1286 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+FR178 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+BA324 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+AA544 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+BA3543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+FB654 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+SA644 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+AA543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+AI444 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+BA543 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+BB567 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+AA567 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+BB554 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None
+RM3245 ---- Total Number of Passenger:  0, Total Baggage Weight: 0.0KG, Total Baggage Volume: 0.0M^3, Extra Fee: £0.0, Capacity Exceeds: None

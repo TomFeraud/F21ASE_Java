@@ -76,16 +76,16 @@ public class FlightList {
 		// this catches trying to convert a String to an integer
 		catch (NumberFormatException nfe) {
 			String error = "Number conversion error in '" + line + "' - " + nfe.getMessage();
-			System.out.println(error);
+			System.err.println(error);
 		}
 		// this catches missing items if only one or two items
 		// other omissions will result in other errors
 		catch (ArrayIndexOutOfBoundsException air) {
 			String error = "Not enough items in : '" + line + "' index position : " + air.getMessage();
-			System.out.println(error);
+			System.err.println(error);
 		}
 		catch (InvalidFormatException ife) {
-            System.out.println(ife.getMessage());
+            System.err.println(ife.getMessage());
         }
 	}
 
