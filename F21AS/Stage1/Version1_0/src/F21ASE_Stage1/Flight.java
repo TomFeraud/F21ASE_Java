@@ -42,34 +42,66 @@ public class Flight {
         this.passengersList = new ArrayList<Passenger>();
     }
 
+    /**
+     * get departure
+     * @return departure
+     */
     public String getDeparture() {
         return this.departure;
     }
 
+    /**
+     * get destination
+     * @return destination
+     */
     public String getDestination() {
         return this.destination;
     }
 
+    /**
+     * get carrier
+     * @return
+     */
     public String getCarrier() {
         return this.carrier;
     }
 
+    /**
+     * get flight code
+     * @return flightCode
+     */
     public String getFlightCode() {
         return this.flightCode;
     }
 
+    /**
+     * get max number of passenger
+     * @return
+     */
     public int getMaxNbrPassengers() {
         return this.maxNbrPassengers;
     }
 
+    /**
+     * get max baggage volume
+     * @return maxBaggageVolume
+     */
     public double getMaxBaggageVolume() {
         return this.maxBaggageVolume;
     }
 
+    /**
+     * get max baggage volume
+     * @return maxBaggageWeight
+     */
     public double getMaxBaggageWeight() {
         return this.maxBaggageWeight;
     }
 
+    /**
+     * get flight information
+     * @return String
+     */
     public String toString() {
         return "Carrier: " +this.carrier+ ", Flight Code: "+this.flightCode+", Departure: " +this.departure+", Destination: "
                 +this.destination+", Max Passengers: "+this.maxNbrPassengers+", Max Baggage Weight: "+this.maxBaggageWeight+", Max Baggage Volume: "
@@ -92,6 +124,10 @@ public class Flight {
         return m.find(); // returns true if flight code matches, otherwise false
     }
 
+    /**
+     * add a passenger to the flight
+     * @param p
+     */
     public void addPassenger(Passenger p) {
         passengersList.add(p);
     }
@@ -104,6 +140,10 @@ public class Flight {
         return weight;
     }
 
+    /**
+     * get the total baggage volume
+     * @return volume
+     */
     private double getTotalBaggageVolume() {
         double volume = 0;
         for (Passenger p: passengersList) {
@@ -112,6 +152,10 @@ public class Flight {
         return volume;
     }
 
+    /**
+     * get the extra baggage fee
+     * @return fee
+     */
     private double getTotalExtraFee() {
         double fee = 0;
         for (Passenger p: passengersList) {
@@ -120,6 +164,10 @@ public class Flight {
         return fee;
     }
 
+    /**
+     * check any capacity exceeds
+     * @return report
+     */
     private String checkCapacity() {
         String report = "";
         if(this.getTotalBaggageWeight() > this.maxBaggageWeight) {
@@ -137,6 +185,10 @@ public class Flight {
         return report;
     }
 
+    /**
+     * print Report in a table
+     * @return table
+     */
     public String printReport() {
     	
     	String Table = "";
@@ -148,9 +200,5 @@ public class Flight {
     	Table += String.format("%-4s", this.checkCapacity());
     	Table += "\n";
     	return Table;
-    	
-    //   return this.flightCode + " ---- Total Number of Passenger:  " + passengersList.size() + ", Total Baggage Weight: "
-      //          + this.getTotalBaggageWeight() + "KG, Total Baggage Volume: " + this.getTotalBaggageVolume() +
-        //        "M^3, Extra Fee: £" +this.getTotalExtraFee()+", Capacity Exceeds: " + this.checkCapacity() + "\n";
     }
 }
