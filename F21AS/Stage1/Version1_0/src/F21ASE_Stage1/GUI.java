@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//quand baggage validé -> checkin à true dans booking.txt
-
 public class GUI extends JFrame implements ActionListener {
 	private BookingList bookingList;
 	private FlightList flightList;
@@ -25,7 +23,12 @@ public class GUI extends JFrame implements ActionListener {
 	JTextField baggageDimXField, baggageDimYField, baggageDimZField;
 	JButton validateCheckInButton, closeKioskButton;
 
-	// public GUI(BookingList bookingList, FlightList flightList)
+	/**
+	 * Creates a GUI taking into parameter the flightList and bookingList provided
+	 * setting up the panels and overall window settings
+	 * @param bookingList
+	 * @param flightList
+	 */
 	public GUI(BookingList bookingList, FlightList flightList) {
 		this.bookingList = bookingList;
 		this.flightList = flightList;
@@ -46,7 +49,10 @@ public class GUI extends JFrame implements ActionListener {
 		setVisible(true);
 		setResizable(false);
 	}
-
+	
+	/**
+	 * Sets up the North Panel of the GUI 
+	 */
 	private void setupNorthPanel() {
 
 		// set up a new panel
@@ -70,7 +76,10 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(northPanel, BorderLayout.NORTH);
 
 	}
-
+	
+	/**
+	 * Sets up the Center Panel of the GUI
+	 */
 	private void setupCenterPanel() {
 
 		JPanel baggagePanel = new JPanel();
@@ -103,7 +112,11 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(centerPanel, BorderLayout.CENTER);
 
 	}
-
+	
+	/**
+	 * Sets up the South Panel of the GUI with the validate and close buttons
+	 * adding listeners to those
+	 */
 	private void setupSouthPanel() {
 
 		JPanel checkInOrClosePanel = new JPanel();
@@ -132,6 +145,14 @@ public class GUI extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * Manages what happens according to the button the user pushed
+	 * If the user pushed "validate", checks if they're in the list and 
+	 * calls constructors to create a booking, passenger, flight and baggage,
+	 * and build those according to the elements in the textfields
+	 * If the user pushed "close", closes the GUI and generates the report
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// changes input to uppercase, so that there is no case sensitivity problem when
