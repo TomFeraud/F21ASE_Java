@@ -30,7 +30,6 @@ public class Manager {
 		bookingList.printSize();
 		bookingList.printBookingList();
 		
-		//System.out.println(bookingList.findByBookingReference("TF12345678"));
 		
 		
 		System.out.println("Size + contents of flight.txt:\n ---------------------------------------------------------------------------------------------------");
