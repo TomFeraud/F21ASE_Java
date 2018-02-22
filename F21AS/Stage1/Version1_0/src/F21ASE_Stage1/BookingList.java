@@ -61,7 +61,7 @@ public class BookingList {
 	 * 
 	 * @param lastName
 	 * @param bookingRefCode
-	 * @return
+	 * @return boolean
 	 */
 	public boolean hasPassengerBooked(String lastName, String bookingRefCode) {
 		for (Map.Entry<String, Booking> entry : bookingList.entrySet()) {
@@ -91,6 +91,7 @@ public class BookingList {
 					processLine(inputLine);
 				}
 			}
+			scanner.close();
 		}
 		// if the file is not found, stop with system exit
 		catch (FileNotFoundException fnf) {
@@ -126,7 +127,6 @@ public class BookingList {
 				this.addBooking(booking);
 			}
 		}
-		
 
 		// this catches missing item(s) for a booking
 		catch (ArrayIndexOutOfBoundsException aieoobe) {
@@ -137,7 +137,7 @@ public class BookingList {
 					+ ".\nPlease insert a booking as: (bookingReferenceCode,Passenger,FlightCode,false)");
 		} catch (InvalidFormatException ife) {
 			System.err.println(ife.getMessage());
-		} 
+		}
 	}
 
 	/**

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Sidi Sun
+ * @version 1.0
+ */
+
 public class Flight {
 	private String departure, destination, carrier;
 	private String flightCode;
@@ -50,12 +55,30 @@ public class Flight {
 	}
 
 	/**
+	 * Sets departure
+	 * 
+	 * @param departure
+	 */
+	public void setDeparture(String departure) {
+		this.departure = departure;
+	}
+
+	/**
 	 * get destination
 	 * 
 	 * @return destination
 	 */
 	public String getDestination() {
 		return this.destination;
+	}
+
+	/**
+	 * Sets destination
+	 * 
+	 * @param destination
+	 */
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
 	/**
@@ -68,12 +91,30 @@ public class Flight {
 	}
 
 	/**
+	 * Sets carrier
+	 * 
+	 * @param carrier
+	 */
+	public void setCarrier(String carrier) {
+		this.carrier = carrier;
+	}
+
+	/**
 	 * get flight code
 	 * 
 	 * @return flightCode
 	 */
 	public String getFlightCode() {
 		return this.flightCode;
+	}
+
+	/**
+	 * Sets flight code
+	 * 
+	 * @param flightCode
+	 */
+	public void setFlightCode(String flightCode) {
+		this.flightCode = flightCode;
 	}
 
 	/**
@@ -86,6 +127,15 @@ public class Flight {
 	}
 
 	/**
+	 * Sets the number max of passengers
+	 * 
+	 * @param maxNbrPassengers
+	 */
+	public void setMaxNbrPassengers(int maxNbrPassengers) {
+		this.maxNbrPassengers = maxNbrPassengers;
+	}
+
+	/**
 	 * get max baggage volume
 	 * 
 	 * @return maxBaggageVolume
@@ -95,12 +145,30 @@ public class Flight {
 	}
 
 	/**
+	 * Sets the maximum volume of baggages
+	 * 
+	 * @param maxBaggageVolume
+	 */
+	public void setMaxBaggageVolume(double maxBaggageVolume) {
+		this.maxBaggageVolume = maxBaggageVolume;
+	}
+
+	/**
 	 * get max baggage volume
 	 * 
 	 * @return maxBaggageWeight
 	 */
 	public double getMaxBaggageWeight() {
 		return this.maxBaggageWeight;
+	}
+
+	/**
+	 * Sets the maximum weight of baggages
+	 * 
+	 * @param maxBaggageWeight
+	 */
+	public void setMaxBaggageWeight(double maxBaggageWeight) {
+		this.maxBaggageWeight = maxBaggageWeight;
 	}
 
 	/**
@@ -202,6 +270,24 @@ public class Flight {
 			report = "None";
 		}
 		return report;
+	}
+
+	/**
+	 * Returns the array list of passenger
+	 * 
+	 * @return passengersList
+	 */
+	public ArrayList<Passenger> getPassengersList() {
+		return passengersList;
+	}
+
+	/**
+	 * Sets the passengers list
+	 * 
+	 * @param passengersList
+	 */
+	public void setPassengersList(ArrayList<Passenger> passengersList) {
+		this.passengersList = passengersList;
 	}
 
 	/**

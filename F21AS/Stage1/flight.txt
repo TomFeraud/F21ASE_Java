@@ -2,7 +2,7 @@ Air France,FR1286,Edinburgh,London,200,600,150
 Air France,FR178,Marseille,Edinburgh,200,600,150
 Ryan Air,RYX576,Marseille,Edinburgh,170,100,100
 British Airways,BA324,Edinburgh,London,200,500,150
-American Airlines,AA544,Houston,Edinburgh,230,600,170
+American Airlines,AA544,Houston,Edinburgh,2,10,10
 British Airways,BA3543,Dublin, Edinburgh,200,500,150
 FlyBE,FB654,Edinburgh,Paris,170,100,100
 Singapore Airlines,SA644,Edinburgh,Cleveland,220,700,190

@@ -21,18 +21,18 @@ public class Manager {
 	 * Launches the GUI, reads the file to fill the lists
 	 */
 	public void run() {
-		
-		System.out.println("Size + contents of booking.txt:\n ---------------------------------------------------------------------------------------------------");
+
+		System.out.println(
+				"Size + contents of booking.txt:\n ---------------------------------------------------------------------------------------------------");
 		Passenger passenger1 = new Passenger("Jean", "MICHEL");
 		Booking booking1 = new Booking(passenger1, "JM12345678", "FR1286");
 		bookingList.addBooking(booking1);
 		bookingList.readFile("booking.txt");
 		bookingList.printSize();
 		bookingList.printBookingList();
-		
-		
-		
-		System.out.println("Size + contents of flight.txt:\n ---------------------------------------------------------------------------------------------------");
+
+		System.out.println(
+				"Size + contents of flight.txt:\n ---------------------------------------------------------------------------------------------------");
 		flightList.readFile("flight.txt");
 		System.out.println(flightList.getTotalNumberofFlights());
 		flightList.printFlightList();
@@ -40,6 +40,5 @@ public class Manager {
 		GUI gui = new GUI(bookingList, flightList);
 		gui.setVisible(true);
 	}
-
 
 }

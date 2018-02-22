@@ -7,4 +7,6 @@
 <fullyQualifiedTypeName name="F21ASE_Stage1.Passenger"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="com.sun.media.sound.InvalidFormatException"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.FlightList"/>
+<fullyQualifiedTypeName name="F21ASE_Stage1.Flight"/>
 </qualifiedTypeNameHistroy>

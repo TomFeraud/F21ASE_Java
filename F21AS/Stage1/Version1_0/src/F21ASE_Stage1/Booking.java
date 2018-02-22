@@ -55,12 +55,40 @@ public class Booking {
 		this.passenger = passenger;
 	}
 
+	/**
+	 * Returns the booking' flight code
+	 * 
+	 * @param flightCode
+	 */
 	public String getFlightCode() {
 		return this.flightCode;
 	}
 
+	/**
+	 * Sets the booking' flight code
+	 * 
+	 * @param flightCode
+	 */
+	public void setFlightCode(String flightCode) {
+		this.flightCode = flightCode;
+	}
+
+	/**
+	 * Returns the booking reference code
+	 * 
+	 * @param bookingReferenceCode
+	 */
 	public String getBookingReferenceCode() {
 		return bookingReferenceCode;
+	}
+
+	/**
+	 * Sets the booking reference code
+	 * 
+	 * @param bookingReferenceCode
+	 */
+	public void setBookingReferenceCode(String bookingReferenceCode) {
+		this.bookingReferenceCode = bookingReferenceCode;
 	}
 
 	/**

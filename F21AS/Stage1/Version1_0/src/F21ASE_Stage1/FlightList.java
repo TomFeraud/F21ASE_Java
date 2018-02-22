@@ -1,6 +1,5 @@
 package F21ASE_Stage1;
 
-import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +7,10 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author Sidi Sun
+ * @version 1.0
+ */
 
 public class FlightList {
 	private ArrayList<Flight> flightList;
@@ -19,6 +22,12 @@ public class FlightList {
 		flightList = new ArrayList<Flight>();
 	}
 
+	/**
+	 * Add a flight to our flight List, return true if well added, false otherwise
+	 * 
+	 * @param flight
+	 * @return boolean
+	 */
 	public boolean addFlight(Flight f) {
 		String flightCode = f.getFlightCode();
 		Flight inList = this.findByFlightCode(flightCode);
@@ -29,10 +38,11 @@ public class FlightList {
 		return false;
 	}
 
-    /**
-     * read flight information
-     * @param filename
-     */
+	/**
+	 * read flight information
+	 * 
+	 * @param filename
+	 */
 	public void readFile(String filename) {
 		try {
 			File f = new File(filename);
@@ -56,6 +66,7 @@ public class FlightList {
 
 	/**
 	 * Process flight information
+	 * 
 	 * @param line
 	 */
 	private void processLine(String line) {
@@ -70,10 +81,10 @@ public class FlightList {
 			double maxBaggageWeight = Double.parseDouble(parts[5]);
 			double maxBaggageVolume = Double.parseDouble(parts[6]);
 
-            // create flight object
-            Flight f = new Flight(departure, destination, carrier, flightCode, maxNbrPassengers, maxBaggageWeight,
-						maxBaggageVolume);
-            this.addFlight(f);
+			// create flight object
+			Flight f = new Flight(departure, destination, carrier, flightCode, maxNbrPassengers, maxBaggageWeight,
+					maxBaggageVolume);
+			this.addFlight(f);
 
 		}
 		// this catches trying to convert a String to an integer
@@ -86,69 +97,76 @@ public class FlightList {
 		catch (ArrayIndexOutOfBoundsException air) {
 			String error = "Not enough items in : '" + line + "' index position : " + air.getMessage();
 			System.err.println(error);
+		} catch (InvalidFormatException ife) {
+			System.err.println(ife.getMessage());
 		}
-		catch (InvalidFormatException ife) {
-            System.err.println(ife.getMessage());
-        }
 	}
 
 	/**
 	 * find flight by flight code
+	 * 
 	 * @param flightCode
 	 * @return
 	 */
 	public Flight findByFlightCode(String flightCode) {
 		for (Flight f : flightList) {
-			if (f.getFlightCode().equals(flightCode))
-			{
+			if (f.getFlightCode().equals(flightCode)) {
 				return f;
 			}
 		}
 		return null;
 	}
 
-    /**
-     * Get the size of the flight array list
-     * @return
-     */
+	/**
+	 * Get the size of the flight array list
+	 * 
+	 * @return
+	 */
 	public int getTotalNumberofFlights() {
 		return flightList.size();
 	}
 
+	/**
+	 * Print the flight list
+	 * 
+	 */
 	public void printFlightList() {
-        for (Flight f:flightList) {
-            System.out.println(f.toString());
-        }
-    }
+		for (Flight f : flightList) {
+			System.out.println(f.toString());
+		}
+	}
 
 	/**
-	 * print flight reports
+	 * print flight reports into a text file
+	 * 
 	 * @param filePath
 	 */
-    public void printReport(String filePath) {
-        try {
-            //the file path
-            File file = new File(filePath);
+	public void printReport(String filePath) {
+		try {
+			// the file path
+			File file = new File(filePath);
 
-            //if the file not exist create one
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+			// if the file not exist create one
+			if (!file.exists()) {
+				file.createNewFile();
+			}
 
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-        	bw.write("Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
-        	System.out.println("Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
-            for (Flight f: flightList) {
-                bw.write(f.printReport());
-                System.out.print(f.printReport());
-            }
-            //close BufferedWriter
-            bw.close();
-            //close FileWriter
-            fw.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(
+					"Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
+			System.out.println(
+					"Check in kiosk report\nFlight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? \n");
+			for (Flight f : flightList) {
+				bw.write(f.printReport());
+				System.out.print(f.printReport());
+			}
+			// close BufferedWriter
+			bw.close();
+			// close FileWriter
+			fw.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 }

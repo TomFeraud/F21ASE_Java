@@ -5,6 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Ombeline Gabriel
+ * @version 1.0
+ */
+
+@SuppressWarnings("serial")
 public class GUI extends JFrame implements ActionListener {
 	private BookingList bookingList;
 	private FlightList flightList;
@@ -26,6 +32,7 @@ public class GUI extends JFrame implements ActionListener {
 	/**
 	 * Creates a GUI taking into parameter the flightList and bookingList provided
 	 * setting up the panels and overall window settings
+	 * 
 	 * @param bookingList
 	 * @param flightList
 	 */
@@ -49,9 +56,9 @@ public class GUI extends JFrame implements ActionListener {
 		setVisible(true);
 		setResizable(false);
 	}
-	
+
 	/**
-	 * Sets up the North Panel of the GUI 
+	 * Sets up the North Panel of the GUI
 	 */
 	private void setupNorthPanel() {
 
@@ -76,7 +83,7 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(northPanel, BorderLayout.NORTH);
 
 	}
-	
+
 	/**
 	 * Sets up the Center Panel of the GUI
 	 */
@@ -112,10 +119,10 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(centerPanel, BorderLayout.CENTER);
 
 	}
-	
+
 	/**
-	 * Sets up the South Panel of the GUI with the validate and close buttons
-	 * adding listeners to those
+	 * Sets up the South Panel of the GUI with the validate and close buttons adding
+	 * listeners to those
 	 */
 	private void setupSouthPanel() {
 
@@ -146,11 +153,12 @@ public class GUI extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Manages what happens according to the button the user pushed
-	 * If the user pushed "validate", checks if they're in the list and 
-	 * calls constructors to create a booking, passenger, flight and baggage,
-	 * and build those according to the elements in the textfields
-	 * If the user pushed "close", closes the GUI and generates the report
+	 * Manages what happens according to the button the user pushed If the user
+	 * pushed "validate", checks if they're in the list and calls constructors to
+	 * create a booking, passenger, flight and baggage, and build those according to
+	 * the elements in the textfields If the user pushed "close", closes the GUI and
+	 * generates the report
+	 * 
 	 * @param e
 	 */
 	@Override
@@ -194,8 +202,8 @@ public class GUI extends JFrame implements ActionListener {
 								Double.parseDouble(baggageDimZField.getText()));
 						double extraFee = baggage.calculateBagFee();
 
-						// if the baggage is oversize (more than 50m^3)
-						if (baggage.calculateDimT() > 50.0) {
+						// if the baggage is oversize (more than 10m^3)
+						if (baggage.calculateDimT() > 10.0) {
 							JOptionPane.showMessageDialog(baggageNotOK, "Your baggage is oversize");
 						}
 						// if the baggage isn't oversize
