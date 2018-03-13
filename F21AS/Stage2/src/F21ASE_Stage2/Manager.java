@@ -34,7 +34,9 @@ public class Manager {
 		System.out.println(flightList.getTotalNumberofFlights());
 		flightList.printFlightList();
 
-		GUI gui = new GUI(bookingList, flightList);
+	//	GUI gui = new GUI(bookingList, flightList);
+		
+		GUI gui = new GUI();
 		gui.setVisible(true);
 
 		// TEST STAGE2

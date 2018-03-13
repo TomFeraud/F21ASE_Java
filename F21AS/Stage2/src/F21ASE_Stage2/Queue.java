@@ -1,9 +1,10 @@
 package F21ASE_Stage2;
 
+import java.util.*;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class Queue extends Thread {
+public class Queue extends Thread implements Subject {
 
 	private ConcurrentLinkedQueue<Passenger> queue;
 	private BookingList bookingList;
@@ -34,6 +35,7 @@ public class Queue extends Thread {
 			try {
 				sleep(5);
 				System.out.println("Queue: " + queue.toString());
+				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,16 +50,40 @@ public class Queue extends Thread {
 	}
 
 	public synchronized int size() {
+		notifyObservers();
 		return queue.size();
+		
 	}
 
 	public Passenger frontPassenger() {
+		notifyObservers();
 		return queue.poll();
+
 	}
 	
 	public Passenger takePassenger() {
+		notifyObservers();
 		return queue.poll();
+		
 	}
 
+	// OBSERVER PATTERN
+	// SUBJECT must be able to register, remove and notify observers
+	// list to hold any observers
+	private List<Observer> registeredObservers = new LinkedList<Observer>();
+
+	// methods to register, remove and notify observers
+	public void registerObserver(Observer obs) {
+		registeredObservers.add(obs);
+	}
+
+	public void removeObserver(Observer obs) {
+		registeredObservers.remove(obs);
+	}
+
+	public void notifyObservers() {
+		for (Observer obs : registeredObservers)
+			obs.update();
+	}
 
 }
