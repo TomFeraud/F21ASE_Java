@@ -2,10 +2,7 @@ package F21ASE_Stage2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author Tom Feraud
@@ -15,7 +12,7 @@ import java.util.TreeMap;
 public class BookingList {
 	// String is the key: the unique booking reference code
 	private TreeMap<String, Booking> bookingList;
-
+	private List<Integer> exclusive = new ArrayList<Integer>();
 	/**
 	 * Constructor of BookingList
 	 */
@@ -170,12 +167,30 @@ public class BookingList {
 	public Passenger randomPasenger() {
 		Random random = new Random();
 		int r = random.nextInt(bookingList.size());
+
+//		System.out.println("Random");
+//		System.out.println(bookingList.size());
+//		System.out.println(r);
+//		System.out.println(findPassengerByBookingReference(bookingList.keySet().
+//		toArray()[r]).getFullName());
+
 		return findPassengerByBookingReference(bookingList.keySet().toArray()[r]);
-		/*
-		 * System.out.println(bookingList.size()); System.out.println(r);
-		 * System.out.println(findPassengerByBookingReference(bookingList.keySet().
-		 * toArray()[r]).getFullName());
-		 */
+	}
+
+	/**
+	 * produce a random passenger that has never been produced before
+	 * @return passenger
+	 */
+	public Passenger randomPassenger() {
+		// generate a random index
+		int index = RandomHelper.getRandomIntExclude(0, bookingList.size(), exclusive);
+		System.out.println("Random Index: "+index);
+		// add the index into the exclusive list, so that this specific index will not regenerate in the future
+		exclusive.add(index);
+		// sort the list
+		Collections.sort(exclusive);
+		System.out.println("Excluded Index: "+Arrays.toString(exclusive.toArray())+"\n");
+		return findPassengerByBookingReference(bookingList.keySet().toArray()[index]);
 	}
 
 	public Passenger findPassengerByBookingReference(Object object) {
