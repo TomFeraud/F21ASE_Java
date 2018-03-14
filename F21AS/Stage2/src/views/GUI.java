@@ -47,6 +47,7 @@ public class GUI extends JFrame implements ActionListener {
 		// set up a new panel
 		JPanel controls = new JPanel();
 		controls.setLayout(new GridLayout(2, 2));
+
 		
 		controls.add(chooseSpeed);
 		controls.add(speed);

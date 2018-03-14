@@ -171,9 +171,17 @@ public class Baggage {
 		this.excessBagFee = excessBagFee;
 	}
 
+	/*
 	public String toString() {
 		return "\n Baggage's weight: " + getWeight() + "kg, baggage dimension:" + calculateDimT()
 				+ "M^3, excess baggage fee: £" + this.excessBagFee;
+
+	}
+	 */
+	
+	public String toString() {
+		return "\n"+ getWeight() + "kg     " + getDimensionX() + " x " + getDimensionY()+ " x " + getDimensionZ() +
+				 "     £" + calculateBagFee() + "\n";
 
 	}
 

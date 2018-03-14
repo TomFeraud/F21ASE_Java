@@ -4,8 +4,10 @@ import java.util.*;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import F21ASE_Stage2.Baggage;
 import F21ASE_Stage2.BookingList;
 import F21ASE_Stage2.Passenger;
+import F21ASE_Stage2.RandomHelper;
 import interfaces.Observer;
 import interfaces.Subject;
 
@@ -13,6 +15,7 @@ public class Queue extends Thread implements Subject {
 
 	private ConcurrentLinkedQueue<Passenger> queue;
 	private BookingList bookingList;
+	private Desk desk;
 	private HashSet<Passenger> passengersArrived;
 
 	public Queue(BookingList bookingList) {
@@ -27,6 +30,13 @@ public class Queue extends Thread implements Subject {
 
 		while (cpt < bookingList.size()) {
 			passengerTmp = bookingList.randomPassenger();
+			double weightBag = RandomHelper.getRandomWeight();
+			int[] dim = RandomHelper.getRandomDimensions();
+			int lengthBag = dim[0];
+			int widthBag = dim[1];
+			int heightBag = dim[2];
+			Baggage bagTmp = new Baggage(weightBag, lengthBag, widthBag, heightBag);
+			passengerTmp.setBaggage(bagTmp);
 
 			// We check against our list if a passenger was not already in the queue (to
 			// ensure that he hasn't passed the check-in and we put him against in the
@@ -40,7 +50,7 @@ public class Queue extends Thread implements Subject {
 				cpt++;
 			}
 			try {
-				sleep(5);
+				sleep(10);
 				System.out.println("Queue: " + queue.toString());
 
 			} catch (InterruptedException e) {
@@ -107,7 +117,7 @@ public class Queue extends Thread implements Subject {
 	public String getQueuePassengers() {
 		String queueText = "";
 		for(Passenger p : queue) { 
-			queueText += bookingList.getPassengerBookingRef(p.getFullName())+ ""+ p.toString() + "\n" ;
+			queueText += bookingList.getPassengerBookingRef(p.getFullName())+"        "+ p.toString()  + p.getBaggage() + "\n\n" ;
 			  //System.out.println(p.toString()); 
 			}
 

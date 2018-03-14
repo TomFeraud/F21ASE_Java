@@ -11,7 +11,6 @@ import F21ASE_Stage2.RandomHelper;
 // => problem of synchronization?
 public class Desk extends Thread {
 	private Queue passengerQueue;
-	// test
 	private BookingList bookingList;
 	private int number;
 
@@ -41,13 +40,17 @@ public class Desk extends Thread {
 		}
 
 	}
+	
+	
+	
 
 	// Process the current passengers
 	// Is synchronized necessary?
 	public synchronized void processPassenger() {
 		Passenger tmp = passengerQueue.takePassenger();
 		String name = tmp.getFullName();
-
+		Baggage baggage = tmp.getBaggage();
+/*
 		double weightBag = RandomHelper.getRandomWeight();
 		int[] dim = RandomHelper.getRandomDimensions();
 		int lengthBag = dim[0];
@@ -59,8 +62,15 @@ public class Desk extends Thread {
 		System.out.println("Actual passenger at desk n°" + number + ":\n" + name + "\n" + infoPassenger
 				+ "\nWeight tot baggage: " + weightBag + "; Dim tot baggage: " + bagTmp.getDimensionX() + "x"
 				+ bagTmp.getDimensionY() + "x" + bagTmp.getDimensionZ() + "\nFees?: " + bagTmp.calculateBagFee());
-
+*/
+		String infoPassenger = bookingList.getPassengerInfo(name);
+		System.out.println("Actual passenger at desk n°" + number + ":\n" + name + "\n" + infoPassenger + " "
+		+ "\nBaggage info " + baggage.getWeight() + "kg  "+ baggage.getDimensionX() +" x " + baggage.getDimensionY() + " x " 
+				+ baggage.getDimensionZ() + " Extra fee: £" + baggage.calculateBagFee());
+		
 		System.out.println();
 
 	}
+
+	
 }
