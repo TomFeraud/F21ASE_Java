@@ -184,12 +184,12 @@ public class BookingList {
 	public Passenger randomPassenger() {
 		// generate a random index
 		int index = RandomHelper.getRandomIntExclude(0, bookingList.size(), exclusive);
-		System.out.println("Random Index: "+index);
+		//System.out.println("Random Index: "+index);
 		// add the index into the exclusive list, so that this specific index will not regenerate in the future
 		exclusive.add(index);
 		// sort the list
 		Collections.sort(exclusive);
-		System.out.println("Excluded Index: "+Arrays.toString(exclusive.toArray())+"\n");
+		//System.out.println("Excluded Index: "+Arrays.toString(exclusive.toArray())+"\n");
 		return findPassengerByBookingReference(bookingList.keySet().toArray()[index]);
 	}
 
@@ -223,6 +223,26 @@ public class BookingList {
 			
 		}
 		return info;
+	}
+	
+	public String getPassengerFlightCode(String name){
+		String flightcode="";
+		for (Booking entry : bookingList.values()) {
+			if(entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
+				flightcode = entry.getFlightCode();
+			}
+		}
+		return flightcode;
+	}
+	
+	public String getPassengerBookingRef(String name){
+		String bookref="";
+		for (Booking entry : bookingList.values()) {
+			if(entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
+				bookref = entry.getBookingReferenceCode();
+			}
+		}
+		return bookref;
 	}
 
 }

@@ -16,6 +16,7 @@ public class QueueDisplay extends JPanel implements Observer {
 	private Queue queueData;
 	private JTextField queueSize = new JTextField(8);
 	private JTextArea testText = new JTextArea();
+	//private JTextArea testBookRef = new JTextArea();
 	
 	JPanel queuePanel = new JPanel(new GridLayout (1,1));
 	JTextArea queueTextArea = new JTextArea(40,25);
@@ -31,7 +32,9 @@ public class QueueDisplay extends JPanel implements Observer {
 		
 		this.add(queueSize);
 		queueSize.setEditable(false);
-
+		
+	//	this.add(testBookRef);
+		//testBookRef.setEditable(false);
 	}
 
 	@Override

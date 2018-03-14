@@ -26,7 +26,7 @@ public class Queue extends Thread implements Subject {
 		Passenger passengerTmp = null;
 
 		while (cpt < bookingList.size()) {
-			passengerTmp = bookingList.randomPasenger();
+			passengerTmp = bookingList.randomPassenger();
 
 			// We check against our list if a passenger was not already in the queue (to
 			// ensure that he hasn't passed the check-in and we put him against in the
@@ -107,7 +107,7 @@ public class Queue extends Thread implements Subject {
 	public String getQueuePassengers() {
 		String queueText = "";
 		for(Passenger p : queue) { 
-			queueText += p.toString() + "\n";
+			queueText += bookingList.getPassengerBookingRef(p.getFullName())+ ""+ p.toString() + "\n" ;
 			  //System.out.println(p.toString()); 
 			}
 
