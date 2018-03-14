@@ -1,4 +1,4 @@
-package F21ASE_Stage2;
+package interfaces;
 
 public interface Observer {
 	

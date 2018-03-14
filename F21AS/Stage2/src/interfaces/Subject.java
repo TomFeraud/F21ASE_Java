@@ -1,4 +1,4 @@
-package F21ASE_Stage2;
+package interfaces;
 
 /**
  * The Subject part of the Observer pattern.

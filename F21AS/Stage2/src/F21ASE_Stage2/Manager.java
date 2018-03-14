@@ -1,5 +1,10 @@
 package F21ASE_Stage2;
 
+import models.Desk;
+import models.Queue;
+import views.GUI;
+import views.TestGUI;
+
 /**
  * @author Tom Feraud
  * @version 1.0
@@ -34,10 +39,6 @@ public class Manager {
 		System.out.println(flightList.getTotalNumberofFlights());
 		flightList.printFlightList();
 
-	//	GUI gui = new GUI(bookingList, flightList);
-		
-		GUI gui = new GUI();
-		gui.setVisible(true);
 
 		// TEST STAGE2
 		// Run the thread who adds a random passenger to the queue
@@ -47,10 +48,17 @@ public class Manager {
 
 		Desk deskTest1 = new Desk(testQueue, bookingList, 1);
 		deskTest1.start();
-		Desk deskTest2 = new Desk(testQueue, bookingList, 2);
-		deskTest2.start();
-		Desk deskTest3 = new Desk(testQueue, bookingList, 3);
-		deskTest3.start();
+		//Desk deskTest2 = new Desk(testQueue, bookingList, 2);
+		//deskTest2.start();
+		//Desk deskTest3 = new Desk(testQueue, bookingList, 3);
+		//deskTest3.start();
+		
+		//GUI gui = new GUI();
+		//gui.setVisible(true);
+		
+		TestGUI gui = new TestGUI(testQueue);
+		gui.setVisible(true);
+		
 	}
 
 }

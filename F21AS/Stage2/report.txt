@@ -2,6 +2,7 @@ Check in kiosk report
 Flight #    Number of Passengers    Baggage Weight(kg)    Baggage Volume(m^3)    Excess Fee(£)    Capacity exceeded? 
 FR1286              0                     0.0                    0.0                  0.0               None
 FR178               0                     0.0                    0.0                  0.0               None
+RY576               0                     0.0                    0.0                  0.0               None
 BA324               0                     0.0                    0.0                  0.0               None
 AA544               0                     0.0                    0.0                  0.0               None
 BA3543              0                     0.0                    0.0                  0.0               None

@@ -1,8 +1,13 @@
-package F21ASE_Stage2;
+package models;
 
 import java.util.*;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import F21ASE_Stage2.BookingList;
+import F21ASE_Stage2.Passenger;
+import interfaces.Observer;
+import interfaces.Subject;
 
 public class Queue extends Thread implements Subject {
 
@@ -28,14 +33,16 @@ public class Queue extends Thread implements Subject {
 			// queue)
 			if (!passengersArrived.contains(passengerTmp)) {
 				passengersArrived.add(passengerTmp);
-				// System.out.println("Passenger arrived:\n"+passengersArrived); //To print the list (test)
+				// System.out.println("Passenger arrived:\n"+passengersArrived); //To print the
+				// list (test)
 				queue.offer(passengerTmp);
+				notifyObservers();
 				cpt++;
 			}
 			try {
 				sleep(5);
 				System.out.println("Queue: " + queue.toString());
-				
+
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -43,28 +50,31 @@ public class Queue extends Thread implements Subject {
 		}
 
 		// System.out.println(queue.toString());
-		/*
-		 * for (Passenger p : queue) { System.out.println(p.toString()); } //To print the queue (test)
-		 */
+
+		// for (Passenger p : queue) { System.out.println(p.toString()); } //To print
+		// the queue (test)
+
 		System.out.println("cpt = " + cpt);
 	}
 
-	public synchronized int size() {
-		notifyObservers();
+	public int size() {
 		return queue.size();
-		
-	}
-
-	public Passenger frontPassenger() {
-		notifyObservers();
-		return queue.poll();
 
 	}
-	
+
 	public Passenger takePassenger() {
-		notifyObservers();
-		return queue.poll();
-		
+
+		if (queue.size() == 0) {
+			// notifyObservers();
+			return null;
+		} else {
+			Passenger tmp = queue.element();
+			queue.poll();
+			notifyObservers(); ///////
+			return tmp;
+			// return queue.poll();
+		}
+
 	}
 
 	// OBSERVER PATTERN
@@ -85,5 +95,41 @@ public class Queue extends Thread implements Subject {
 		for (Observer obs : registeredObservers)
 			obs.update();
 	}
+
+	// to test the observer
+	public String getNameNextPassenger() {
+		if (queue.size() == 0) {
+			return "";
+		}
+		return queue.element().getFullName();
+	}
+
+	public String getQueuePassengers() {
+		String queueText = "";
+		for(Passenger p : queue) { 
+			queueText += p.toString() + "\n";
+			  //System.out.println(p.toString()); 
+			}
+
+		return queueText;
+	}
+
+	// public String toString() {
+
+	// }
+
+	/*
+	 * public String getFormattedQueue() { String info = ""; info +=
+	 * String.format("%-35s", queue.); info += String.format("%-24s",
+	 * "Flight Code: '" + this.flightCode + "', "); info += String.format("%-28s",
+	 * "Departure: '" + this.departure + "', "); info += String.format("%-30s",
+	 * "Destination: '" + this.destination + "', "); info += String.format("%-24s",
+	 * "Max Passengers: '" + this.maxNbrPassengers + "', "); info +=
+	 * String.format("%-24s", "Max Baggage Weight: '" + this.maxBaggageWeight +
+	 * "', "); info += String.format("%-24s", "Max Baggage Volume: '" +
+	 * this.maxBaggageVolume + "'");
+	 * 
+	 * return info; }
+	 */
 
 }

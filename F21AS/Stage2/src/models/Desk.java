@@ -1,6 +1,11 @@
-package F21ASE_Stage2;
+package models;
 
-import java.util.Random;
+
+
+import F21ASE_Stage2.Baggage;
+import F21ASE_Stage2.BookingList;
+import F21ASE_Stage2.Passenger;
+import F21ASE_Stage2.RandomHelper;
 
 //06/03: Tom> Works nicely, still not perfect: it can happens that passengers are not proceeded correctly: one pass before someone before him(in the queue) (to solve)
 // => problem of synchronization?
@@ -22,11 +27,10 @@ public class Desk extends Thread {
 		// To change the "i method": tmp
 		// 24,12,8
 		// for 1,2,3 desk(s)
-		while (i < 8) {
+		while (i < 24) {
 			try {
-				sleep(2000); // time big enough to test (so the queue is complete before proceeding
+				sleep(200); // time big enough to test (so the queue is complete before proceeding
 								// passengers)
-				// System.out.println(nextPassenger());
 				processPassenger();
 				i++;
 
@@ -38,27 +42,23 @@ public class Desk extends Thread {
 
 	}
 
-	// Return the next passenger (the first in the line)
-	public Passenger nextPassenger() {
-		return passengerQueue.frontPassenger();
-	}
-
 	// Process the current passengers
 	// Is synchronized necessary?
 	public synchronized void processPassenger() {
 		Passenger tmp = passengerQueue.takePassenger();
 		String name = tmp.getFullName();
 
-		// double dimBag = tmp.getBaggage().getDimensionT();
-		Random random = new Random();
-		double weightBag = random.nextInt(50);
-		double dimBag = random.nextInt(200);
-		Baggage bagTmp = new Baggage(weightBag, dimBag);
+		double weightBag = RandomHelper.getRandomWeight();
+		int[] dim = RandomHelper.getRandomDimensions();
+		int lengthBag = dim[0];
+		int widthBag = dim[1];
+		int heightBag = dim[2];
+		Baggage bagTmp = new Baggage(weightBag, lengthBag, widthBag, heightBag);
 
 		String infoPassenger = bookingList.getPassengerInfo(name);
-		System.out.println(
-				"Actual passenger at desk n°" + number + ":\n" + name + "\n" + infoPassenger + "\nWeight tot baggage: "
-						+ weightBag + "; Dim tot baggage: " + dimBag + "\nFees?: " + bagTmp.calculateBagFee());
+		System.out.println("Actual passenger at desk n°" + number + ":\n" + name + "\n" + infoPassenger
+				+ "\nWeight tot baggage: " + weightBag + "; Dim tot baggage: " + bagTmp.getDimensionX() + "x"
+				+ bagTmp.getDimensionY() + "x" + bagTmp.getDimensionZ() + "\nFees?: " + bagTmp.calculateBagFee());
 
 		System.out.println();
 
