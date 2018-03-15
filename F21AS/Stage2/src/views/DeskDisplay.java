@@ -10,13 +10,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import interfaces.Observer;
-import models.Queue;
+import models.Desk;
 
 @SuppressWarnings("serial")
-public class QueueDisplay extends JPanel implements Observer {
+public class DeskDisplay extends JPanel implements Observer {
 
-	private Queue queueData;
-	private JTextField queueSize = new JTextField(4);
+	private Desk deskData;
+	//private JTextField queueSize = new JTextField(4);
 	private JTextArea testText = new JTextArea(20,50);
 	
 	JPanel queuePanel = new JPanel(new GridLayout (2,1));
@@ -24,17 +24,12 @@ public class QueueDisplay extends JPanel implements Observer {
 	
 
 	
-	public QueueDisplay(Queue queue) {
+	public DeskDisplay(Desk desk) {
 
-		this.queueData = queue;
-		queue.registerObserver(this);
-		this.add(nbOfPeople);
+		this.deskData = desk;
+		desk.registerObserver(this);
 
-		
-		this.add(queueSize);
-		queueSize.setHorizontalAlignment(JTextField.CENTER);
-		queueSize.setEditable(false);
-		
+		testText.setText("SUUUUUP");
 		this.add(testText);
 		testText.setEditable(false);
 		Font font = new Font("Arial", Font.PLAIN, 10);
@@ -49,9 +44,9 @@ public class QueueDisplay extends JPanel implements Observer {
 	@Override
 	public void update() {
 		//String test = queueData.getNameNextPassenger();
-		String test = queueData.getQueuePassengers();
-		testText.setText(test);
-		queueSize.setText(String.valueOf(queueData.size()));
+	//	String test = deskData.processPassenger();
+	//	testText.setText(test);
+//		queueSize.setText(String.valueOf(deskData.size()));
 		//queueData.getQueuePassengers();
 		
 		

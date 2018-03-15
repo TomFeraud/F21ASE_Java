@@ -15,7 +15,6 @@ public class Queue extends Thread implements Subject {
 
 	private ConcurrentLinkedQueue<Passenger> queue;
 	private BookingList bookingList;
-	private Desk desk;
 	private HashSet<Passenger> passengersArrived;
 
 	public Queue(BookingList bookingList) {

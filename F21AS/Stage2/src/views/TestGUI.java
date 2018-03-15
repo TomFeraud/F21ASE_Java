@@ -9,7 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 
 import models.Queue;
 
@@ -17,14 +19,14 @@ public class TestGUI extends JFrame {
 
 	private JTextField text = new JTextField();
 
+
 	public TestGUI(Queue model) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
 
 //		add(BorderLayout.NORTH, methodTest());
-
 		add(new QueueDisplay(model), BorderLayout.CENTER);
-
+		
 		setSize(700, 700);
 		setVisible(true);
 	}

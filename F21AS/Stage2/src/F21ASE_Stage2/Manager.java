@@ -46,7 +46,7 @@ public class Manager {
 		Queue testQueue = new Queue(bookingList);
 		testQueue.start();
 
-		Desk deskTest1 = new Desk(testQueue, bookingList, 1);
+		Desk deskTest1 = new Desk(testQueue, bookingList, 1, 10);
 		deskTest1.start();
 		//Desk deskTest2 = new Desk(testQueue, bookingList, 2);
 		//deskTest2.start();
