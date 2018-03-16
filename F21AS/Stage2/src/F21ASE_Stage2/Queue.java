@@ -1,13 +1,9 @@
-package models;
+package F21ASE_Stage2;
 
 import java.util.*;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import F21ASE_Stage2.Baggage;
-import F21ASE_Stage2.BookingList;
-import F21ASE_Stage2.Passenger;
-import F21ASE_Stage2.RandomHelper;
 import interfaces.Observer;
 import interfaces.Subject;
 
@@ -49,7 +45,7 @@ public class Queue extends Thread implements Subject {
 				cpt++;
 			}
 			try {
-				sleep(10);
+				sleep(100);
 				System.out.println("Queue: " + queue.toString());
 
 			} catch (InterruptedException e) {
@@ -74,14 +70,12 @@ public class Queue extends Thread implements Subject {
 	public Passenger takePassenger() {
 
 		if (queue.size() == 0) {
-			// notifyObservers();
 			return null;
 		} else {
 			Passenger tmp = queue.element();
 			queue.poll();
-			notifyObservers(); ///////
+			notifyObservers();
 			return tmp;
-			// return queue.poll();
 		}
 
 	}
@@ -115,30 +109,12 @@ public class Queue extends Thread implements Subject {
 
 	public String getQueuePassengers() {
 		String queueText = "";
-		for(Passenger p : queue) { 
-			queueText += bookingList.getPassengerBookingRef(p.getFullName())+"        "+ p.toString()  + p.getBaggage() + "\n\n" ;
-			  //System.out.println(p.toString()); 
-			}
+		for (Passenger p : queue) {
+			queueText += bookingList.getPassengerBookingRef(p.getFullName()) + "        " + p.toString()
+					+ p.getBaggage() + "\n\n";
+		}
 
 		return queueText;
 	}
-
-	// public String toString() {
-
-	// }
-
-	/*
-	 * public String getFormattedQueue() { String info = ""; info +=
-	 * String.format("%-35s", queue.); info += String.format("%-24s",
-	 * "Flight Code: '" + this.flightCode + "', "); info += String.format("%-28s",
-	 * "Departure: '" + this.departure + "', "); info += String.format("%-30s",
-	 * "Destination: '" + this.destination + "', "); info += String.format("%-24s",
-	 * "Max Passengers: '" + this.maxNbrPassengers + "', "); info +=
-	 * String.format("%-24s", "Max Baggage Weight: '" + this.maxBaggageWeight +
-	 * "', "); info += String.format("%-24s", "Max Baggage Volume: '" +
-	 * this.maxBaggageVolume + "'");
-	 * 
-	 * return info; }
-	 */
 
 }

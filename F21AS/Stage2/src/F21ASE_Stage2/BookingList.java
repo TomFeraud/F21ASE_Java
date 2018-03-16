@@ -13,6 +13,7 @@ public class BookingList {
 	// String is the key: the unique booking reference code
 	private TreeMap<String, Booking> bookingList;
 	private List<Integer> exclusive = new ArrayList<Integer>();
+
 	/**
 	 * Constructor of BookingList
 	 */
@@ -168,28 +169,31 @@ public class BookingList {
 		Random random = new Random();
 		int r = random.nextInt(bookingList.size());
 
-//		System.out.println("Random");
-//		System.out.println(bookingList.size());
-//		System.out.println(r);
-//		System.out.println(findPassengerByBookingReference(bookingList.keySet().
-//		toArray()[r]).getFullName());
+		// System.out.println("Random");
+		// System.out.println(bookingList.size());
+		// System.out.println(r);
+		// System.out.println(findPassengerByBookingReference(bookingList.keySet().
+		// toArray()[r]).getFullName());
 
 		return findPassengerByBookingReference(bookingList.keySet().toArray()[r]);
 	}
 
 	/**
 	 * produce a random passenger that has never been produced before
+	 * 
 	 * @return passenger
 	 */
 	public Passenger randomPassenger() {
 		// generate a random index
 		int index = RandomHelper.getRandomIntExclude(0, bookingList.size(), exclusive);
-		//System.out.println("Random Index: "+index);
-		// add the index into the exclusive list, so that this specific index will not regenerate in the future
+		// System.out.println("Random Index: "+index);
+		// add the index into the exclusive list, so that this specific index will not
+		// regenerate in the future
 		exclusive.add(index);
 		// sort the list
 		Collections.sort(exclusive);
-		//System.out.println("Excluded Index: "+Arrays.toString(exclusive.toArray())+"\n");
+		// System.out.println("Excluded Index:
+		// "+Arrays.toString(exclusive.toArray())+"\n");
 		return findPassengerByBookingReference(bookingList.keySet().toArray()[index]);
 	}
 
@@ -216,33 +220,47 @@ public class BookingList {
 	public String getPassengerInfo(String name) {
 		String info = "";
 		for (Booking entry : bookingList.values()) {
-			if(entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
-				info += "Booking reference code: " +entry.getBookingReferenceCode();
+			if (entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
+				info += "Booking reference code: " + entry.getBookingReferenceCode();
 				info += "  Flight Code: " + entry.getFlightCode();
+				info += "Test: " + entry.hasCheckedIn();
+				//entry.setCheckedIn(true);
 			}
-			
+
 		}
 		return info;
 	}
-	
-	public String getPassengerFlightCode(String name){
-		String flightcode="";
+
+	public String getPassengerFlightCode(String name) {
+		String flightcode = "";
 		for (Booking entry : bookingList.values()) {
-			if(entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
+			if (entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
 				flightcode = entry.getFlightCode();
 			}
 		}
 		return flightcode;
 	}
-	
-	public String getPassengerBookingRef(String name){
-		String bookref="";
+
+	public String getPassengerBookingRef(String name) {
+		String bookref = "";
 		for (Booking entry : bookingList.values()) {
-			if(entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
+			if (entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
 				bookref = entry.getBookingReferenceCode();
 			}
 		}
 		return bookref;
 	}
+
+	public boolean hasPassengerCheckedIn(String name) {
+		for (Map.Entry<String, Booking> entry : bookingList.entrySet()) {
+			Booking value = entry.getValue();
+			if (value.hasCheckedIn() && value.getPassenger().getFullName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 
 }

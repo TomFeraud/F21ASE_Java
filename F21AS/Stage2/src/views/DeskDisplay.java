@@ -1,55 +1,56 @@
 package views;
 
-
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import F21ASE_Stage2.Desk;
 import interfaces.Observer;
-import models.Desk;
 
 @SuppressWarnings("serial")
 public class DeskDisplay extends JPanel implements Observer {
 
 	private Desk deskData;
-	//private JTextField queueSize = new JTextField(4);
-	private JTextArea testText = new JTextArea(20,50);
-	
-	JPanel queuePanel = new JPanel(new GridLayout (2,1));
-	JLabel nbOfPeople = new JLabel("Number of people currently in the queue: ");
-	
+	private JTextArea textArea, textAreaFlight;
 
-	
 	public DeskDisplay(Desk desk) {
 
 		this.deskData = desk;
 		desk.registerObserver(this);
 
-		testText.setText("SUUUUUP");
-		this.add(testText);
-		testText.setEditable(false);
-		Font font = new Font("Arial", Font.PLAIN, 10);
-		testText.setFont(font);
+		textArea = new JTextArea(4, 35);
+		textArea.setEditable(false);
+		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
+		textArea.setText("This desk is open");
+		this.add(textArea);
+		JScrollPane scrollList = new JScrollPane(textArea);
+		this.add(scrollList, BorderLayout.CENTER);
+		
+		
+	/*	textAreaFlight = new JTextArea(4, 35);
+		textAreaFlight.setEditable(false);
+		textAreaFlight.setFont(new Font("Arial", Font.PLAIN, 10));
+		this.add(textAreaFlight);
+		JScrollPane scrollListFlight = new JScrollPane(textArea);
+		this.add(scrollListFlight, BorderLayout.SOUTH); */
+		
 		
 
 	}
 
-
-
-
 	@Override
 	public void update() {
-		//String test = queueData.getNameNextPassenger();
-	//	String test = deskData.processPassenger();
-	//	testText.setText(test);
-//		queueSize.setText(String.valueOf(deskData.size()));
-		//queueData.getQueuePassengers();
-		
-		
+		String test = deskData.getDeskInfo();
+		textArea.setText(test);
+		//String info = flight.getFlightInfo();
+		//textAreaFlight.setText(info);
+
 	}
 
 }

@@ -1,15 +1,19 @@
 package F21ASE_Stage2;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import interfaces.Observer;
 
 /**
  * @author Sidi Sun
  * @version 1.0
  */
 
-public class Flight {
+public class Flight extends Thread {
 	private String departure, destination, carrier;
 	private String flightCode;
 
@@ -18,6 +22,9 @@ public class Flight {
 	private double maxBaggageVolume, maxBaggageWeight;
 
 	private ArrayList<Passenger> passengersList;
+	
+	//STAGE 2
+	private int nbrOfPassengerCheckedIn = 0;
 
 	/**
 	 * Constructor
@@ -43,6 +50,21 @@ public class Flight {
 		this.maxBaggageWeight = maxBaggageWeight;
 		this.maxBaggageVolume = maxBaggageVolume;
 		this.passengersList = new ArrayList<Passenger>();
+	}
+
+	public void run() {
+
+		while (true) {
+			//notifyObservers();
+			try {
+				sleep(10); 
+				notifyObservers();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -307,4 +329,51 @@ public class Flight {
 		Table += "\n";
 		return Table;
 	}
+
+	////////////////////// STAGE 2
+	// OBSERVER PATTERN
+	private List<Observer> registeredObservers = new LinkedList<Observer>();
+
+	// methods to register, remove and notify observers
+	public void registerObserver(Observer obs) {
+		registeredObservers.add(obs);
+	}
+
+	public void removeObserver(Observer obs) {
+		registeredObservers.remove(obs);
+	}
+
+	public void notifyObservers() {
+		for (Observer obs : registeredObservers)
+			obs.update();
+	}
+
+	
+
+	public String getFlightInfo() {
+		int i = 0;
+		String info = "";
+		info += "nbr " + i +" " + this.getFlightCode() + " " + this.getDestination() + "\n"
+				+getNbrOfPassengerCheckedIn() + " checked";
+		i++;
+
+		return info;
+	}
+
+	
+	public void addFlightPassenger() {
+		this.nbrOfPassengerCheckedIn ++;
+		//notifyObservers();
+	}
+
+	public int getNbrOfPassengerCheckedIn() {
+		return nbrOfPassengerCheckedIn;
+	}
+
+	public void setNbrOfPassengerCheckedIn(int nbrOfPassengerCheckedIn) {
+		this.nbrOfPassengerCheckedIn = nbrOfPassengerCheckedIn;
+	}
+	
+	
+	
 }

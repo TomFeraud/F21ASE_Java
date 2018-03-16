@@ -6,12 +6,18 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="oversi" key="selection"/>
+		<item value="DeskDisplay" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="DeskDisplay"/>
+			<item value="registerObserver"/>
+			<item value="notifyObservers"/>
+			<item value="size"/>
+			<item value="notif"/>
+			<item value="toString"/>
 			<item value="oversi"/>
 			<item value="getB"/>
 			<item value="check"/>
@@ -23,7 +29,7 @@
 		<item value="344" key="DIALOG_WIDTH"/>
 		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="428" key="DIALOG_HEIGHT"/>
-		<item value="630" key="DIALOG_X_ORIGIN"/>
-		<item value="77" key="DIALOG_Y_ORIGIN"/>
+		<item value="893" key="DIALOG_X_ORIGIN"/>
+		<item value="187" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
