@@ -31,16 +31,7 @@ public class DeskDisplay extends JPanel implements Observer {
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.CENTER);
-		
-		
-	/*	textAreaFlight = new JTextArea(4, 35);
-		textAreaFlight.setEditable(false);
-		textAreaFlight.setFont(new Font("Arial", Font.PLAIN, 10));
-		this.add(textAreaFlight);
-		JScrollPane scrollListFlight = new JScrollPane(textArea);
-		this.add(scrollListFlight, BorderLayout.SOUTH); */
-		
-		
+			
 
 	}
 

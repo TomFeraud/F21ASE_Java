@@ -24,10 +24,12 @@ public class Simulation {
 	// set true when times stops
 	private boolean finished = false;
 
-
 	public Simulation(int nbrDesk) {
 		bookingList = new BookingList();
 		bookingList.readFile("booking.txt");
+		
+		flightList = new FlightList();
+		flightList.readFile("flight.txt");
 
 		this.queue = new Queue(bookingList);
 		queue.start();
@@ -35,23 +37,20 @@ public class Simulation {
 		deskList = new DeskList();
 		this.nbrDesk = nbrDesk;
 		for (int i = 0; i < nbrDesk; i++) {
-			Desk desk = new Desk(queue, bookingList, i + 1, 100);
+			Desk desk = new Desk(queue, bookingList, flightList, i + 1, 100);
 			deskList.add(desk);
 			deskList.get(i).start();
 		}
 
-		flightList = new FlightList();
-		flightList.readFile("flight.txt");
+		
 		this.nbrFlight = flightList.getTotalNumberofFlights();
-		//TEEEEEST
-		System.out.println(flightList.getTotalNumberofFlights());
 		
-		
-		// TEEEEEEST OK
-		flight1 = flightList.findByFlightCode("FR1286");
-		// System.out.println(flight1);
-		flight1.start();
+		// TEEEEEST
+		//System.out.println(flightList.getTotalNumberofFlights());
 
+		// TEEEEEEST OK
+		//flight1 = flightList.findByFlightCode("FR1286");
+		//System.out.println(flight1);
 	}
 
 	public Flight getFlight1() {
@@ -101,5 +100,25 @@ public class Simulation {
 	public void setNbrDesk(int nbrDesk) {
 		this.nbrDesk = nbrDesk;
 	}
+
+	public int getNbrFlight() {
+		return nbrFlight;
+	}
+
+	public void setNbrFlight(int nbrFlight) {
+		this.nbrFlight = nbrFlight;
+	}
+
+	public FlightList getFlightList() {
+		return flightList;
+	}
+
+	public void setFlightList(FlightList flightList) {
+		this.flightList = flightList;
+	}
+	
+	
+	
+	
 
 }

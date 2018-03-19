@@ -13,7 +13,7 @@ import interfaces.Observer;
  * @version 1.0
  */
 
-public class Flight extends Thread {
+public class Flight {
 	private String departure, destination, carrier;
 	private String flightCode;
 
@@ -22,8 +22,8 @@ public class Flight extends Thread {
 	private double maxBaggageVolume, maxBaggageWeight;
 
 	private ArrayList<Passenger> passengersList;
-	
-	//STAGE 2
+
+	// STAGE 2
 	private int nbrOfPassengerCheckedIn = 0;
 
 	/**
@@ -50,21 +50,6 @@ public class Flight extends Thread {
 		this.maxBaggageWeight = maxBaggageWeight;
 		this.maxBaggageVolume = maxBaggageVolume;
 		this.passengersList = new ArrayList<Passenger>();
-	}
-
-	public void run() {
-
-		while (true) {
-			//notifyObservers();
-			try {
-				sleep(10); 
-				notifyObservers();
-
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 	/**
@@ -344,26 +329,24 @@ public class Flight extends Thread {
 	}
 
 	public void notifyObservers() {
-		for (Observer obs : registeredObservers)
+		for (Observer obs : registeredObservers) {
 			obs.update();
+		}
 	}
 
-	
-
 	public String getFlightInfo() {
-		int i = 0;
 		String info = "";
-		info += "nbr " + i +" " + this.getFlightCode() + " " + this.getDestination() + "\n"
-				+getNbrOfPassengerCheckedIn() + " checked";
-		i++;
+		info += this.getFlightCode() + " " + this.departure + "->" + this.getDestination() + "\n"
+				+ getNbrOfPassengerCheckedIn() + " checked";
 
 		return info;
 	}
 
-	
 	public void addFlightPassenger() {
-		this.nbrOfPassengerCheckedIn ++;
-		//notifyObservers();
+		this.nbrOfPassengerCheckedIn++;
+		notifyObservers();
+		System.out.println("TEST : " + this.getNbrOfPassengerCheckedIn());
+
 	}
 
 	public int getNbrOfPassengerCheckedIn() {
@@ -373,7 +356,5 @@ public class Flight extends Thread {
 	public void setNbrOfPassengerCheckedIn(int nbrOfPassengerCheckedIn) {
 		this.nbrOfPassengerCheckedIn = nbrOfPassengerCheckedIn;
 	}
-	
-	
-	
+
 }

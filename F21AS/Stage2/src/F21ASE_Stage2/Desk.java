@@ -18,31 +18,28 @@ public class Desk extends Thread {
 	private FlightList flightList;
 	private Flight flight;
 
-	public Desk(Queue passengerQueue, BookingList bookingList, int number, int endTime) {
+	public Desk(Queue passengerQueue, BookingList bookingList, FlightList flightList, int number, int endTime) {
 		this.passengerQueue = passengerQueue;
 		this.bookingList = bookingList;
+		this.flightList = flightList;
 		this.number = number;
 		this.endTime = endTime;
 
 		// TEST
 		passengersCheckedIn = new HashSet<Passenger>();
-		flightList = new FlightList();
-		flightList.readFile("flight.txt");
-		flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode("Tom FERAUD"));
-		//flight.start();
+		//flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode("Tom FERAUD"));
 	}
 
 	public void run() {
 		long startTime = System.currentTimeMillis();
 		while (true) {
-			//notifyObservers();
 			if ((System.currentTimeMillis() - startTime) < endTime * 1000) {
 				try {
 					sleep(2000); // time big enough to test (so the queue is complete before proceeding
 					// passengers)
 
 					notifyObservers();
-					//System.out.println(this.getRegisteredObservers());
+					flight.notifyObservers();
 
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -100,18 +97,13 @@ public class Desk extends Thread {
 					+ baggage.getDimensionY() + " x " + baggage.getDimensionZ() + " Extra fee: £"
 					+ baggage.calculateBagFee();
 			booking.setCheckedIn(true);
+			flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode(name));
 			System.out.println("VOL : " + flight);
 
-			System.out.println("Taille avant: " + flight.getNbrOfPassengerCheckedIn());
 			if (booking.hasCheckedIn()) {
-				//notifyObservers();
-				//flight.notify();
-				flight.notifyObservers();
 				flight.addFlightPassenger();
-				flight.notifyObservers();
-				//updateFlightInfo(flight); // add a passenger
 			}
-			System.out.println("Taille apres: " + flight.getNbrOfPassengerCheckedIn());
+
 
 			/*
 			 * try { sleep(1000); booking.setCheckedIn(true); // set the check in value to
@@ -126,16 +118,7 @@ public class Desk extends Thread {
 		//System.out.println("TEEEEEST: " + bookingList.getPassengerInfo("Tom FERAUD")); // working
 		return info;
 	}
-	
-	/*public void updateFlightInfo(Flight flight) {
-		flight.addFlightPassenger();
-	}
-	
-	public String getFlightInfo( {
-		String info = "";
-		
-		return info;
-	} */
+
 
 	public Queue getPassengerQueue() {
 		return passengerQueue;
