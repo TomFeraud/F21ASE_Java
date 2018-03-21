@@ -11,7 +11,7 @@ public class Main {
 		//Manager manager = new Manager();
 		//manager.run();
 		
-		Simulation sim = new Simulation(3); // 3 desks open
+		Simulation sim = new Simulation(); 
 		//TestGUI view = new TestGUI(sim.getQueue(), sim.getDeskTest1());
 		TestGUI view = new TestGUI(sim);
 

@@ -1,5 +1,9 @@
 package models;
 
+import java.util.Random;
+
+import javax.swing.JOptionPane;
+
 import F21ASE_Stage2.BookingList;
 import F21ASE_Stage2.Desk;
 import F21ASE_Stage2.DeskList;
@@ -24,9 +28,35 @@ public class Simulation {
 	// set true when times stops
 	private boolean finished = false;
 
-	public Simulation(int nbrDesk) {
+	public Simulation() {
 		bookingList = new BookingList();
 		bookingList.readFile("booking.txt");
+		
+		int nbrDesk=0;
+		bookingList = new BookingList();
+		bookingList.readFile("booking.txt");	
+		String[] options = new String[] {"3", "2", "1"};
+		int response = JOptionPane.showOptionDialog(null, "Select a number of desks\n"
+				+ "Exiting this window will mean a random number of desks will be used.", "Desks",
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+		        null, options, null);
+		if (response == -1)
+		{
+			Random generator = new Random(); 
+			nbrDesk = generator.nextInt(3) + 1;
+		}
+		if (response == 2)
+		{
+			nbrDesk=1;
+		}
+		if (response == 1)
+		{
+			nbrDesk=2;	
+		}
+		if (response == 0)
+		{
+			nbrDesk=3;
+		}
 		
 		flightList = new FlightList();
 		flightList.readFile("flight.txt");

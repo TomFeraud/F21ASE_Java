@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -24,14 +25,23 @@ public class DeskDisplay extends JPanel implements Observer {
 		this.deskData = desk;
 		desk.registerObserver(this);
 
-		textArea = new JTextArea(4, 35);
+		textArea = new JTextArea(6, 45);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
 		textArea.setText("This desk is open");
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.CENTER);
-			
+		
+		
+	/*	textAreaFlight = new JTextArea(4, 35);
+		textAreaFlight.setEditable(false);
+		textAreaFlight.setFont(new Font("Arial", Font.PLAIN, 10));
+		this.add(textAreaFlight);
+		JScrollPane scrollListFlight = new JScrollPane(textArea);
+		this.add(scrollListFlight, BorderLayout.SOUTH); */
+		
+		
 
 	}
 
