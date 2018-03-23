@@ -8,11 +8,6 @@ import java.util.regex.Pattern;
 
 import interfaces.Observer;
 
-/**
- * @author Sidi Sun
- * @version 1.0
- */
-
 public class Flight {
 	private String departure, destination, carrier;
 	private String flightCode;
@@ -25,6 +20,8 @@ public class Flight {
 
 	// STAGE 2
 	private int nbrOfPassengerCheckedIn = 0;
+	private double totalWeight =0.0;
+	private double totalVolume =0.0;
 
 	/**
 	 * Constructor
@@ -336,16 +333,30 @@ public class Flight {
 
 	public String getFlightInfo() {
 		String info = "";
-		info += this.getFlightCode() + " " + this.departure + "->" + this.getDestination() + "\n"
-				+ getNbrOfPassengerCheckedIn() + " checked";
+		if (getNbrOfPassengerCheckedIn() == 1)
+		{
+			info += "Flight " + this.getFlightCode() + " to " + this.getDestination() + "\n"
+					+ getNbrOfPassengerCheckedIn() + " passenger is currently checked in "
+					+"\nTotal Baggage Weight: " + totalWeight+ "kg / " +this.getMaxBaggageWeight() + "kg (capacity)"
+					+"\nTotal Baggage Vol.: " + totalVolume + "m3 / " +this.getMaxBaggageVolume() + "m3 (capacity)";
+		}
+		else
+		{
+			info += "Flight " + this.getFlightCode() + " to " + this.getDestination() + "\n"
+					+ getNbrOfPassengerCheckedIn() + " passengers are currently checked in "
+					+"\nTotal Baggage Weight: " + totalWeight+ "kg / " +this.getMaxBaggageWeight() + "kg (capacity)"
+					+"\nTotal Baggage Vol.: " + totalVolume + "m3 / " +this.getMaxBaggageVolume() + "m3 (capacity)";
+		}
 
 		return info;
 	}
 
-	public void addFlightPassenger() {
+	public void addFlightPassenger(double weight,double volume) {
 		this.nbrOfPassengerCheckedIn++;
+		totalWeight += weight;
+		totalWeight = Math.round(totalWeight * 100.0) / 100.0;
+		totalVolume += volume;
 		notifyObservers();
-		System.out.println("TEST : " + this.getNbrOfPassengerCheckedIn());
 
 	}
 

@@ -3,7 +3,6 @@ package F21ASE_Stage2;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-
 import interfaces.Observer;
 
 public class Desk extends Thread {
@@ -101,7 +100,7 @@ public class Desk extends Thread {
 			System.out.println("VOL : " + flight);
 
 			if (booking.hasCheckedIn()) {
-				flight.addFlightPassenger();
+				flight.addFlightPassenger(baggage.getWeight(), baggage.calculateDimT());
 			}
 
 

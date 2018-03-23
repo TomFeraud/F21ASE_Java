@@ -23,10 +23,11 @@ public class FlightDisplay extends JPanel implements Observer {
 		this.flight = flight;
 		flight.registerObserver(this);
 
-
 		textArea = new JTextArea(4, 35);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
+		textArea.setText("Check in for flight " + flight.getFlightCode()+ " to " + flight.getDestination() +" open\n"
+				+ "Passengers please make your way to the gate" );
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.SOUTH);
