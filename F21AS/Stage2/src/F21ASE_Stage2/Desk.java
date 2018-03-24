@@ -4,8 +4,9 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import interfaces.Observer;
+import interfaces.Subject;
 
-public class Desk extends Thread {
+public class Desk extends Thread implements Subject {
 	private Queue passengerQueue;
 	private BookingList bookingList;
 	private int number;
