@@ -36,15 +36,15 @@ public class Simulation {
 		bookingList = new BookingList();
 		bookingList.readFile("booking.txt");	
 		String[] options = new String[] {"3", "2", "1"};
-		int response = JOptionPane.showOptionDialog(null, "Select a number of desks\n"
-				+ "Exiting this window will mean a random number of desks will be used.", "Desks",
+		int response = JOptionPane.showOptionDialog(null, "Please select a number of check in desks\n", "Desks",
 		        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
 		        null, options, null);
+		
 		if (response == -1)
 		{
-			Random generator = new Random(); 
-			nbrDesk = generator.nextInt(3) + 1;
+			System.exit(0);
 		}
+		
 		if (response == 2)
 		{
 			nbrDesk=1;
