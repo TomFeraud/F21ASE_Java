@@ -25,7 +25,7 @@ public class TestGUI extends JFrame {
 		setupCenterPanel(sim);
 		setupSouthPanel(sim);
 
-		setSize(1200, 600);
+		setSize(1275, 600);
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
