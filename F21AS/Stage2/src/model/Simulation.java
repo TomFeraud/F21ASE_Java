@@ -1,4 +1,4 @@
-package models;
+package model;
 
 import java.util.Random;
 
@@ -74,13 +74,7 @@ public class Simulation {
 
 		
 		this.nbrFlight = flightList.getTotalNumberofFlights();
-		
-		// TEEEEEST
-		//System.out.println(flightList.getTotalNumberofFlights());
 
-		// TEEEEEEST OK
-		//flight1 = flightList.findByFlightCode("FR1286");
-		//System.out.println(flight1);
 	}
 
 	public Flight getFlight1() {

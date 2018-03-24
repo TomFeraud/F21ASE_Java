@@ -1,7 +1,7 @@
 package F21ASE_Stage2;
 
 import controllers.TestController;
-import models.Simulation;
+import model.Simulation;
 import views.TestGUI;
 
 public class Main {

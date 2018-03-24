@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Simulation;
+import model.Simulation;
 import views.TestGUI;
 
 public class TestController {

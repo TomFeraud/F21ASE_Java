@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import F21ASE_Stage2.Desk;
 import F21ASE_Stage2.Queue;
-import models.Simulation;
+import model.Simulation;
 
 public class TestGUI extends JFrame {
 	
