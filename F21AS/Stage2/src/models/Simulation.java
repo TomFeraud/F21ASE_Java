@@ -67,7 +67,7 @@ public class Simulation {
 		deskList = new DeskList();
 		this.nbrDesk = nbrDesk;
 		for (int i = 0; i < nbrDesk; i++) {
-			Desk desk = new Desk(queue, bookingList, flightList, i + 1, 100);
+			Desk desk = new Desk(queue, bookingList, flightList, i + 1, 10);
 			deskList.add(desk);
 			deskList.get(i).start();
 		}

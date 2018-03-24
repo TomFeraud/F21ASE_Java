@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import interfaces.Observer;
+import interfaces.Subject;
 
-public class Flight {
+public class Flight implements Subject {
 	private String departure, destination, carrier;
 	private String flightCode;
 
