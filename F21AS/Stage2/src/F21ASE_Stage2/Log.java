@@ -67,6 +67,7 @@ public class Log {
     {
         Log log = Log.getInstance();
         log.write("add passenger");
+        /*
         long startTime = System.currentTimeMillis();
         int i = 2;
         while(i > 1) {
@@ -76,7 +77,7 @@ public class Log {
             } else {
                 log.write("waiting");
             }
-        }
-    }
+        }*/
+    } 
 
 }

@@ -42,6 +42,8 @@ public class Queue extends Thread implements Subject {
 				// list (test)
 				queue.offer(passengerTmp);
 				notifyObservers();
+				Log log = Log.getInstance();
+		        log.write(passengerTmp.getFullName() +" joined the queue");
 				cpt++;
 			}
 			try {

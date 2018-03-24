@@ -97,19 +97,15 @@ public class Desk extends Thread {
 					+ baggage.calculateBagFee();
 			booking.setCheckedIn(true);
 			flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode(name));
-			System.out.println("VOL : " + flight);
+			
+			Log log = Log.getInstance();
+	        //log.write("Passenger:" +name +" to the flight " + flight.getFlightCode());
+			log.write("Passenger:" +name +" is checking in");
 
 			if (booking.hasCheckedIn()) {
 				flight.addFlightPassenger(baggage.getWeight(), baggage.calculateDimT());
 			}
 
-
-			/*
-			 * try { sleep(1000); booking.setCheckedIn(true); // set the check in value to
-			 * TRUE info = ""; info += "Desk NO." + number + " is free\n"; } catch
-			 * (InterruptedException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); }
-			 */
 
 		} else {
 			info += "Desk NO." + number + " is free\n";
