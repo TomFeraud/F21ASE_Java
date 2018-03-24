@@ -4,12 +4,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-import F21ASE_Stage2.BookingList;
-import F21ASE_Stage2.Desk;
-import F21ASE_Stage2.DeskList;
-import F21ASE_Stage2.Flight;
-import F21ASE_Stage2.FlightList;
-import F21ASE_Stage2.Queue;
+import F21ASE_Stage2.*;
 
 public class Simulation {
 	private BookingList bookingList;
@@ -61,19 +56,31 @@ public class Simulation {
 		flightList = new FlightList();
 		flightList.readFile("flight.txt");
 
-		this.queue = new Queue(bookingList);
-		queue.start();
-
-		deskList = new DeskList();
-		this.nbrDesk = nbrDesk;
-		for (int i = 0; i < nbrDesk; i++) {
-			Desk desk = new Desk(queue, bookingList, flightList, i + 1, 100);
-			deskList.add(desk);
-			deskList.get(i).start();
-		}
+		//////////// Old Multithreading Classes
+//		this.queue = new Queue(bookingList);
+//		queue.start();
+//
+//		deskList = new DeskList();
+//		this.nbrDesk = nbrDesk;
+//		for (int i = 0; i < nbrDesk; i++) {
+//			Desk desk = new Desk(queue, bookingList, flightList, i + 1, 100);
+//			deskList.add(desk);
+//			deskList.get(i).start();
+//		}
 
 		
 		this.nbrFlight = flightList.getTotalNumberofFlights();
+
+		//////////// TEST New Multithreading Classes
+
+		PassengerQueue queue = new PassengerQueue();
+
+		Producer producer = new Producer(bookingList, queue);
+		producer.start();
+		for (int i = 0; i < nbrDesk; i++) {
+			Consumer consumer = new Consumer(queue, i+1, 5);
+			consumer.start();
+		}
 		
 		// TEEEEEST
 		//System.out.println(flightList.getTotalNumberofFlights());
