@@ -61,8 +61,8 @@ public class Simulation {
 		flightList = new FlightList();
 		flightList.readFile("flight.txt");
 
-		//this.queue = new Queue(bookingList);
-		//queue.start();
+		this.queue = new Queue(bookingList);
+		queue.start();
 
 		deskList = new DeskList();
 		this.nbrDesk = nbrDesk;
