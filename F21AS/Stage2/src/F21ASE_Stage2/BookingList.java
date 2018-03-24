@@ -223,8 +223,6 @@ public class BookingList {
 			if (entry.getPassenger().getFullName().equalsIgnoreCase(name)) {
 				info += "Booking reference code: " + entry.getBookingReferenceCode();
 				info += "  Flight Code: " + entry.getFlightCode();
-				info += "Test: " + entry.hasCheckedIn();
-				//entry.setCheckedIn(true);
 			}
 
 		}

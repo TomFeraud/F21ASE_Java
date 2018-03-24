@@ -25,7 +25,7 @@ public class DeskDisplay extends JPanel implements Observer {
 		this.deskData = desk;
 		desk.registerObserver(this);
 
-		textArea = new JTextArea(6, 35);
+		textArea = new JTextArea(6, 42);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
 		textArea.setText("This desk is open");
