@@ -40,7 +40,7 @@ public class Consumer extends Thread implements Subject {
         long startTime = System.currentTimeMillis();
         date.setTime(startTime);
         System.out.println(dateFormat.format(date) + ": Desk [" +deskNo+ "] is open");
-
+        log.write("Desk [" + deskNo + "] is open\n");
         while (!queue.getDone()) {
             try {
                 Thread.sleep(100);
