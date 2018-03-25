@@ -7,21 +7,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-
-import F21ASE_Stage2.Consumer;
 import F21ASE_Stage2.ConsumerList;
 import F21ASE_Stage2.Flight;
 import interfaces.Observer;
 
 public class FlightDisplay extends JPanel implements Observer {
-//	private Flight flight = new Flight("departure", "destination", "carrier", "FR1286", 0, 0, 0);
-	private Flight flight;
 	private JTextArea textArea;
 
-
+	/**
+	 * Constructor
+	 *
+	 * @param flight Flight
+	 * @param consumerList Consumer List
+	 */
 	public FlightDisplay(Flight flight, ConsumerList consumerList) {
 
-		this.flight = flight;
 		for (int i = 0; i < consumerList.getSize(); i++) {
 			consumerList.get(i).registerObserver(this);
 		}
@@ -37,16 +37,28 @@ public class FlightDisplay extends JPanel implements Observer {
 		setVisible(true);
 	}
 
+	/* Implement Observer */
+
+	/**
+	 * Update Observer
+	 *
+	 * Not Used in this class
+	 */
 	@Override
-	public void update() {
-		String info = flight.getFlightInfo();
-		textArea.setText(info);
+	public void update() {}
 
-	}
-
+	/**
+	 * Update Observer
+	 * Only the second element of the array is used to
+	 * Update the flight capacity
+	 *
+	 * @param info Info contains two elements: passenger info and flight info
+	 */
 	@Override
 	public void update(String[] info)
 	{
+		// info.length < 1 means desks are closed
+		// then there is no need to update flight capacity
 		if(info.length > 1) {
 			textArea.setText(info[1]);
 		}

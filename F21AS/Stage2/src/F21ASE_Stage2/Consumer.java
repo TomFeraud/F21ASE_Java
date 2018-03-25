@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Consumer extends Thread implements Subject {
 
-    private List<Observer> registeredObservers = new LinkedList<Observer>();
+    private List<Observer> registeredObservers = new LinkedList<>();
     private PassengerQueue queue;
     private int deskNo;
     private int endIn;
@@ -45,18 +45,23 @@ public class Consumer extends Thread implements Subject {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             // check-in passengers until the queue is empty
             while (queue.getSize() > 0) {
                 // close the desk after the given time
                 if((System.currentTimeMillis()- startTime) < endIn*1000) {
+                    // notify DeskDisplay and FlightDisplay
                     notifyObservers(queue.get(deskNo));
+                    // notify QueueDisplay
                     notifyObservers();
                     try {
                         Thread.sleep(1000); // check in a passenger in every 1s
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 } else {
+                    // notify DeskDisplay only
                     notifyObservers(new String[] {"Desk [" + deskNo + "] is closed"});
                     System.out.println("Desk [" + deskNo + "] is closed\n");
                     log.write("Desk [" + deskNo + "] is closed\n");
@@ -66,7 +71,11 @@ public class Consumer extends Thread implements Subject {
         }
     }
 
-    public int getDeskNo() {
+    /**
+     * Get the desk number
+     * @return deskNo
+     */
+    int getDeskNo() {
         return this.deskNo;
     }
 

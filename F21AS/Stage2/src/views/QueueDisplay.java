@@ -1,9 +1,6 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,7 +8,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import F21ASE_Stage2.Consumer;
 import F21ASE_Stage2.ConsumerList;
 import F21ASE_Stage2.PassengerQueue;
 import F21ASE_Stage2.Producer;
@@ -24,6 +20,13 @@ public class QueueDisplay extends JPanel implements Observer {
 	private JTextField queueSize;
 	private JTextArea testText;
 
+	/**
+	 * Constructor
+	 *
+	 * @param queue Passenger Queue
+	 * @param producer Producer
+	 * @param consumerList Consumer
+	 */
 	public QueueDisplay(PassengerQueue queue, Producer producer, ConsumerList consumerList) {
 		JLabel nbOfPeople = new JLabel("Number of people currently in the queue: ");
 		testText = new JTextArea(20, 50);
@@ -46,19 +49,26 @@ public class QueueDisplay extends JPanel implements Observer {
 		this.add(scrollList);
 		
 	}
-	
 
-//	@Override
-//	public void update() {
-//		String test = queueData.getQueuePassengers();
-//		testText.setText(test);
-//		queueSize.setText(String.valueOf(queueData.size()));
-//
-//	}
+	/* Implement Observer */
 
+	/**
+	 * Update Observer
+	 *
+	 * Not Used in this class
+	 *
+	 * @param info Info
+	 */
 	@Override
 	public void update(String[] info) {}
 
+	/**
+	 * Update Observer
+	 * Update the current queue's content
+	 * When adding random passenger to the queue
+	 * And checking passenger off the queue
+	 *
+	 */
 	@Override
 	public void update()
 	{

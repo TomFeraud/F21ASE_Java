@@ -14,7 +14,7 @@ public class PassengerQueue {
      * Constructor
      */
     public PassengerQueue(BookingList bookingList, FlightList flightList) {
-        this.queue = new LinkedList<Passenger>();
+        this.queue = new LinkedList<>();
         this.bookingList = bookingList;
         this.flightList = flightList;
         this.empty = true;
@@ -23,9 +23,12 @@ public class PassengerQueue {
     }
 
     /**
-     * Check-in passenger from the hed of the queue
-     * @param deskNo
-     * @return passenger
+     * Consumer method
+     * Poll a passenger at the head of the Queue
+     * Return passenger information and flight information for observer to update
+     *
+     * @param deskNo Desk Number
+     * @return passenger information and flight information
      */
     public synchronized String[] get(int deskNo) {
         // if queue is empty, then wait
@@ -44,8 +47,6 @@ public class PassengerQueue {
         String passengerInfo = checkIn(passenger, deskNo);
         // get current flight info
         String flightInfo = getFlightInfo(passenger);
-        // get all passenger's info that are currently in the queue
-        String queueInfo = getQueuePassengers();
 
         return new String[] {passengerInfo, flightInfo};
     }
@@ -82,6 +83,13 @@ public class PassengerQueue {
 
     }
 
+    /**
+     * Check-in the passenger and get the passenger information
+     *
+     * @param passenger Passenger
+     * @param deskNo Desk Number
+     * @return Passenger Information
+     */
     private String checkIn(Passenger passenger, int deskNo) {
         // get passenger information
         String name = passenger.getFullName();
@@ -103,7 +111,13 @@ public class PassengerQueue {
         return info;
     }
 
-    public String getFlightInfo(Passenger passenger) {
+    /**
+     * Add the passenger to the corresponding flight and get the current flight information
+     *
+     * @param passenger Passenger
+     * @return flight information
+     */
+    private String getFlightInfo(Passenger passenger) {
         // get passenger's flight
         Flight flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode(passenger.getFullName()));
         // add passenger to the corresponding flight
@@ -113,19 +127,23 @@ public class PassengerQueue {
         return flight.getFlightInfo();
     }
 
+    /**
+     * Get information of the passengers in the queue
+     *
+     * @return queue information
+     */
     public synchronized String getQueuePassengers() {
-        String queueText = "";
+        StringBuilder queueText = new StringBuilder();
         for (Passenger p : queue) {
-            queueText += bookingList.getPassengerBookingRef(p.getFullName()) + "        " + p.toString()
-                    + p.getBaggage() + "\n\n";
+            queueText.append(bookingList.getPassengerBookingRef(p.getFullName())).append("        ").append(p.toString()).append(p.getBaggage()).append("\n\n");
         }
-        return queueText;
+        return queueText.toString();
     }
 
     /**
      * Tell consumer that the producer has finished adding passengers
      */
-    public synchronized void setDone() {
+    synchronized void setDone() {
         done = true;
         empty = false;
         // start the consumer threads
@@ -136,13 +154,13 @@ public class PassengerQueue {
      * Get the status of producer
      * @return done
      */
-    public boolean getDone() {
+    boolean getDone() {
         return done;
     }
 
     /**
      * Get the size of the queue
-     * @return
+     * @return size of the queue
      */
     public int getSize() { return queue.size(); }
 }

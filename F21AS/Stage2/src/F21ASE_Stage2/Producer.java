@@ -8,14 +8,15 @@ import java.util.List;
 
 public class Producer extends Thread implements Subject{
 
-    private List<Observer> registeredObservers = new LinkedList<Observer>();
+    private List<Observer> registeredObservers = new LinkedList<>();
     private PassengerQueue queue;
     private BookingList bookingList;
 
     /**
      * Constructor
-     * @param queue Passenger queue that will be filled up randomly
-     * @param bookingList
+     *
+     * @param bookingList Booking list of passengers
+     * @param queue Passenger queue
      */
     public Producer(BookingList bookingList, PassengerQueue queue) {
         this.queue = queue;
@@ -38,7 +39,7 @@ public class Producer extends Thread implements Subject{
     /**
      * Register an observer with this subject
      *
-     * @param obs
+     * @param obs Observer
      */
     @Override
     public void registerObserver(Observer obs)
@@ -49,7 +50,7 @@ public class Producer extends Thread implements Subject{
     /**
      * De-register an observer with this subject
      *
-     * @param obs
+     * @param obs Observer
      */
     @Override
     public void removeObserver(Observer obs)
@@ -59,6 +60,8 @@ public class Producer extends Thread implements Subject{
 
     /**
      * Inform all registered observers that there's been an update
+     *
+     * Used for updating passenger queue information
      */
     @Override
     public void notifyObservers()
@@ -66,7 +69,11 @@ public class Producer extends Thread implements Subject{
         for (Observer obs : registeredObservers)
             obs.update();
     }
-
+    /**
+     * Inform all registered observers that there's been an update
+     *
+     * Not Used in this class
+     */
     public void notifyObservers(String[] info) {
         for (Observer obs : registeredObservers)
             obs.update(info);

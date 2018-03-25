@@ -5,7 +5,10 @@ public interface Observer {
 	/**
 	 * Tell Observer to update itself
 	 */
-	public void update();
-
-	public void update(String[] info);
+	void update();
+	/**
+	 * Tell Observer to update itself
+	 * @param info
+	 */
+	void update(String[] info);
 }

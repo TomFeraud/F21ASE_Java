@@ -9,17 +9,21 @@ public interface Subject {
 	/**
 	 * Register an observer with this subject
 	 */
-	public void registerObserver(Observer obs);
+	void registerObserver(Observer obs);
 
 	/**
 	 * De-register an observer with this subject
 	 */
-	public void removeObserver(Observer obs);
+	void removeObserver(Observer obs);
 
 	/**
 	 * Inform all registered observers that there's been an update
 	 */
-	public void notifyObservers();
+	void notifyObservers();
 
-	public void notifyObservers(String[] info);
+	/**
+	 * Inform all registered observers that there's been an update
+	 * @param info
+	 */
+	void notifyObservers(String[] info);
 }

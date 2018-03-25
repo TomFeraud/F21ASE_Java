@@ -2,30 +2,26 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import F21ASE_Stage2.Consumer;
-import F21ASE_Stage2.PassengerQueue;
 import interfaces.Observer;
 
 @SuppressWarnings("serial")
 public class DeskDisplay extends JPanel implements Observer {
 
-	private PassengerQueue queue;
-	private Consumer consumer;
 	private JTextArea textArea;
 
-	public DeskDisplay(PassengerQueue queue, Consumer consumer) {
+	/**
+	 * Constructor
+	 *
+	 * @param consumer consumer
+	 */
+	public DeskDisplay(Consumer consumer) {
 
-		this.queue = queue;
-		this.consumer = consumer;
 		consumer.registerObserver(this);
 
 		textArea = new JTextArea(6, 42);
@@ -37,15 +33,23 @@ public class DeskDisplay extends JPanel implements Observer {
 		this.add(scrollList, BorderLayout.CENTER);
 	}
 
+	/* Implement Observer */
+
+	/**
+	 * Update Observer
+	 *
+	 * Not Used in this class
+	 */
 	@Override
-	public void update() {
-//		String test = que.checkIn();
-//		textArea.setText(test);
-//		//String info = flight.getFlightInfo();
-//		//textAreaFlight.setText(info);
+	public void update() {}
 
-	}
-
+	/**
+	 * Update Observer
+	 * Only the first element of the array is used to
+	 * Update the current passenger on the check-in desk
+	 *
+	 * @param info Info contains two elements: passenger info and flight info
+	 */
 	@Override
 	public void update(String[] info)
 	{

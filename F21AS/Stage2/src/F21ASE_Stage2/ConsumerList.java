@@ -5,15 +5,26 @@ import java.util.ArrayList;
 public class ConsumerList {
     private ArrayList<Consumer> consumers;
 
-
+    /**
+     * Constructor
+     */
     public ConsumerList() {
-        this.consumers = new ArrayList<Consumer> ();
+        this.consumers = new ArrayList<>();
     }
 
-    public void add(Consumer l) {
-        consumers.add(l);
+    /**
+     * Add consumer
+     * @param consumer Consumer
+     */
+    public void add(Consumer consumer) {
+        consumers.add(consumer);
     }
 
+    /**
+     * Find consumer by deskNo
+     * @param id Desk Number
+     * @return consumer
+     */
     public Consumer find(int id) {
         for (Consumer d : consumers) {
             if (d.getDeskNo() == id){
@@ -23,11 +34,20 @@ public class ConsumerList {
         return null;
     }
 
+    /**
+     * Get Consumer
+     *
+     * @param i Desk Number
+     * @return Consumer
+     */
     public Consumer get(int i) {
         return consumers.get(i);
     }
 
-
+    /**
+     * Get the size of consumerList
+     * @return total number of consumer
+     */
     public int getSize() {
         return consumers.size();
     }

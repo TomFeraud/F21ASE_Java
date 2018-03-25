@@ -8,8 +8,14 @@ import java.awt.*;
 public class MyGUI extends JFrame {
 
 	private JTextField text = new JTextField();
+
+	/**
+	 * Constructor
+	 *
+	 * @param sim Simulation
+	 */
 	public MyGUI(Simulation sim) {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBackground(Color.white);
 	
 		setupNorthPanel(sim);
@@ -20,7 +26,12 @@ public class MyGUI extends JFrame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
-	
+
+	/**
+	 * Setup North Panel
+	 *
+	 * @param sim Simulation
+	 */
 	private void setupNorthPanel(Simulation sim) {
 		// set up a new panel
 		JPanel queueInfo = new JPanel();
@@ -35,7 +46,12 @@ public class MyGUI extends JFrame {
 		this.add(northPanel, BorderLayout.NORTH);
 
 	}
-	
+
+	/**
+	 * Setup Central Panel
+	 *
+	 * @param sim Simulation
+	 */
 	private void setupCenterPanel(Simulation sim) {
 
 		JPanel deskInfo = new JPanel();
@@ -43,7 +59,7 @@ public class MyGUI extends JFrame {
 
 		for (int i = 0; i < sim.getConsumerList().getSize(); i++) {
 
-				deskInfo.add(new DeskDisplay(sim.getQueue(), sim.getConsumerList().get(i)));
+				deskInfo.add(new DeskDisplay(sim.getConsumerList().get(i)));
 		}
 		
 		// set up the whole center panel containing the previous elements
@@ -53,9 +69,12 @@ public class MyGUI extends JFrame {
 		this.add(centerPanel, BorderLayout.CENTER);
 
 	}
-	
-	
 
+	/**
+	 * Setup South Panel
+	 *
+	 * @param sim Simulation
+	 */
 	private void setupSouthPanel(Simulation sim) {
  
 		JPanel flightInfo = new JPanel();
@@ -93,8 +112,6 @@ public class MyGUI extends JFrame {
 	public String getText() {
 		return text.getText();
 	}
-
-
 }
 
 

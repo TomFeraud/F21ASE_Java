@@ -66,22 +66,47 @@ public class Simulation {
 		}
 	}
 
+	/**
+	 * Get the consumer list
+	 *
+	 * @return consumerList
+	 */
 	public ConsumerList getConsumerList() {
 		return consumerList;
 	}
 
+	/**
+	 * Get the producer
+	 *
+	 * @return producer
+	 */
 	public Producer getProducer() {
 		return producer;
 	}
 
+	/**
+	 * Get passenger queue
+	 *
+	 * @return passenger queue
+	 */
 	public PassengerQueue getQueue() {
 		return queue;
 	}
 
+	/**
+	 * Get the number of flights
+	 *
+	 * @return number of flights
+	 */
 	public int getNbrFlight() {
 		return nbrFlight;
 	}
 
+	/**
+	 * Get flight List
+	 *
+	 * @return flight list
+	 */
 	public FlightList getFlightList() {
 		return flightList;
 	}
