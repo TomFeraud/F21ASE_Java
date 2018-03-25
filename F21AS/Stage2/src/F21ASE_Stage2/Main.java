@@ -1,8 +1,8 @@
 package F21ASE_Stage2;
 
 import controllers.TestController;
-import models.Simulation;
-import views.TestGUI;
+import model.Simulation;
+import views.MyGUI;
 
 public class Main {
 
@@ -13,7 +13,7 @@ public class Main {
 		
 		Simulation sim = new Simulation(); 
 		//TestGUI view = new TestGUI(sim.getQueue(), sim.getDeskTest1());
-		TestGUI view = new TestGUI(sim);
+		MyGUI view = new MyGUI(sim);
 
 		TestController controller = new TestController(view,sim);
 	}

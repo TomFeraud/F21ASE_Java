@@ -1,14 +1,21 @@
 package F21ASE_Stage2;
 
+import interfaces.Observer;
+import interfaces.Subject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Consumer extends Thread{
+public class Consumer extends Thread implements Subject {
 
+    private List<Observer> registeredObservers = new LinkedList<Observer>();
     private PassengerQueue queue;
     private int deskNo;
     private int endIn;
+    private Log log;
 
     /**
      * Constructor
@@ -20,6 +27,7 @@ public class Consumer extends Thread{
         this.queue = queue;
         this.deskNo = deskNo;
         this.endIn = endIn;
+        this.log = Log.getInstance();
     }
 
     /**
@@ -35,17 +43,50 @@ public class Consumer extends Thread{
 
         while (!queue.getDone()) {
             try {
-                Thread.sleep(1000); // check in a passenger in every 1s
+                Thread.sleep(100);
             } catch (InterruptedException e) {
             }
-            // check closing time
-            if((System.currentTimeMillis()- startTime) < endIn*1000) {
-                queue.get(deskNo);
-            } else {
-                date.setTime(System.currentTimeMillis());
-                System.out.println(dateFormat.format(date) +": Desk ["+deskNo+"] is closed\n");
-                return;
+            // check-in passengers until the queue is empty
+            while (queue.getSize() > 0) {
+                // close the desk after the given time
+                if((System.currentTimeMillis()- startTime) < endIn*1000) {
+                    notifyObservers(queue.get(deskNo));
+                    notifyObservers();
+                    try {
+                        Thread.sleep(1000); // check in a passenger in every 1s
+                    } catch (InterruptedException e) {
+                    }
+                } else {
+                    notifyObservers(new String[] {"Desk [" + deskNo + "] is closed"});
+                    System.out.println("Desk [" + deskNo + "] is closed\n");
+                    log.write("Desk [" + deskNo + "] is closed\n");
+                    return;
+                }
             }
         }
+    }
+
+    public int getDeskNo() {
+        return this.deskNo;
+    }
+
+    /* Implement Subject interface methods*/
+
+    public void registerObserver(Observer obs) {
+        registeredObservers.add(obs);
+    }
+
+    public void removeObserver(Observer obs) {
+        registeredObservers.remove(obs);
+    }
+
+    public void notifyObservers() {
+        for (Observer obs : registeredObservers)
+            obs.update();
+    }
+
+    public void notifyObservers(String[] info) {
+        for (Observer obs : registeredObservers)
+            obs.update(info);
     }
 }

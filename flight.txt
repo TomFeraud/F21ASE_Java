@@ -1,0 +1,6 @@
+Air France,FR1286,Edinburgh,London,200,600,150
+British Airways,BA324,Edinburgh,London,800,500,150
+American Airlines,AA544,Edinburgh,Houston,2,900,175
+FlyBE,FB654,Edinburgh,Paris,170,800,125
+Air China,AA543,Edinburgh,Beijing,225,900,400
+Icelandair,AI444,Edinburgh,Minneapolis,180,850,400

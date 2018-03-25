@@ -20,4 +20,6 @@ public interface Subject {
 	 * Inform all registered observers that there's been an update
 	 */
 	public void notifyObservers();
+
+	public void notifyObservers(String[] info);
 }

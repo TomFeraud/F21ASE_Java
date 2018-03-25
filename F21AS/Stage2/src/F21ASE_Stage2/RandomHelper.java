@@ -35,28 +35,20 @@ public class RandomHelper {
 		return randomInt;
 	}
 
-	public static int[] getRandomDimensions() {
+	public static double[] getRandomDimensions() {
 		Random random = new Random();
-		int length = random.nextInt(200); //between 0 & 200 cm
-		int width = random.nextInt(200);
-		int height = random.nextInt(200);
+		double length = random.nextDouble() * 4 + 1;
+		double width = random.nextDouble() * 4 + 1;
+		double height = random.nextDouble() * 4 + 1;
 
-		return new int[] { length, width, height };
+		length = Math.round(length * 100d) / 100d;
+		width = Math.round(width * 100d) / 100d;
+		height = Math.round(height * 100d) / 100d;
+		return new double[] { length, width, height };
 	}
 
 	public static double getRandomWeight() {
 		Random random = new Random();
-		return random.nextDouble() * 200;
+		return random.nextDouble() * 50;
 	}
-
-	/*
-	 * public static void main(String args[]) {
-	 * 
-	 * /////// TEST getRandomIntExclude() List<Integer> exclusive = new
-	 * ArrayList<Integer>(); for (int i = 0; i < 10; i++){ int number =
-	 * getRandomIntExclude(0, 10, exclusive); exclusive.add(number);
-	 * Collections.sort(exclusive); System.out.println(number); }
-	 * 
-	 * }
-	 */
 }

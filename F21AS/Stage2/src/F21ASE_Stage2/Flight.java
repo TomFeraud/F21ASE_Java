@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import interfaces.Observer;
+import interfaces.Subject;
 
-public class Flight {
+public class Flight implements Subject {
 	private String departure, destination, carrier;
 	private String flightCode;
 
@@ -20,8 +21,8 @@ public class Flight {
 
 	// STAGE 2
 	private int nbrOfPassengerCheckedIn = 0;
-	private double totalWeight =0.0;
-	private double totalVolume =0.0;
+	private double totalWeight = 0.0;
+	private double totalVolume = 0.0;
 
 	/**
 	 * Constructor
@@ -331,31 +332,43 @@ public class Flight {
 		}
 	}
 
+	@Override
+	public void notifyObservers(String[] info)
+	{
+
+	}
+
 	public String getFlightInfo() {
 		String info = "";
-		if (getNbrOfPassengerCheckedIn() == 1)
-		{
-			info += "Flight " + this.getFlightCode() + " to " + this.getDestination() + "\n"
-					+ getNbrOfPassengerCheckedIn() + " passenger is currently checked in "
-					+"\nTotal Baggage Weight: " + totalWeight+ "kg / " +this.getMaxBaggageWeight() + "kg (capacity)"
-					+"\nTotal Baggage Vol.: " + totalVolume + "m3 / " +this.getMaxBaggageVolume() + "m3 (capacity)";
+		String singOrPlur = "";
+		String weightString = "\nTotal Baggage Weight: " + totalWeight + "kg / "
+				+ this.getMaxBaggageWeight() + "kg";
+		String volumeString = "\nTotal Baggage Vol.: " + totalVolume + "m3 / "
+				+ this.getMaxBaggageVolume() + "m3";
+		if (getNbrOfPassengerCheckedIn() == 1) {
+			singOrPlur = " passenger is";
+		} else {
+			singOrPlur = " passengers are";
 		}
-		else
-		{
-			info += "Flight " + this.getFlightCode() + " to " + this.getDestination() + "\n"
-					+ getNbrOfPassengerCheckedIn() + " passengers are currently checked in "
-					+"\nTotal Baggage Weight: " + totalWeight+ "kg / " +this.getMaxBaggageWeight() + "kg (capacity)"
-					+"\nTotal Baggage Vol.: " + totalVolume + "m3 / " +this.getMaxBaggageVolume() + "m3 (capacity)";
+		if (totalWeight > this.getMaxBaggageWeight()) {
+			weightString = "\nWARNING WEIGHT CAPACITY EXCEEDED";
+
 		}
+		if (totalVolume > this.getMaxBaggageVolume()) {
+			volumeString = "\nWARNING VOLUME CAPACITY EXCEEDED";
+		}
+		info += "Flight " + this.getFlightCode() + " to " + this.getDestination() + "\n" + getNbrOfPassengerCheckedIn()
+				+ singOrPlur + " currently checked in " +  weightString + volumeString;
 
 		return info;
 	}
 
-	public void addFlightPassenger(double weight,double volume) {
+	public void addFlightPassenger(double weight, double volume) {
 		this.nbrOfPassengerCheckedIn++;
 		totalWeight += weight;
 		totalWeight = Math.round(totalWeight * 100.0) / 100.0;
 		totalVolume += volume;
+		totalVolume = Math.round(totalVolume * 100.0) / 100.0;
 		notifyObservers();
 
 	}

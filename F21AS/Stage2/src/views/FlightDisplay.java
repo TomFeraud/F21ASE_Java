@@ -7,21 +7,24 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import F21ASE_Stage2.BookingList;
-import F21ASE_Stage2.Desk;
+
+import F21ASE_Stage2.Consumer;
+import F21ASE_Stage2.ConsumerList;
 import F21ASE_Stage2.Flight;
 import interfaces.Observer;
 
 public class FlightDisplay extends JPanel implements Observer {
-	private Flight flight = new Flight("departure", "destination", "carrier", "FR1286", 0, 0, 0);
+//	private Flight flight = new Flight("departure", "destination", "carrier", "FR1286", 0, 0, 0);
+	private Flight flight;
 	private JTextArea textArea;
 
 
-	public FlightDisplay(Flight flight) {
-
+	public FlightDisplay(Flight flight, ConsumerList consumerList) {
 
 		this.flight = flight;
-		flight.registerObserver(this);
+		for (int i = 0; i < consumerList.getSize(); i++) {
+			consumerList.get(i).registerObserver(this);
+		}
 
 		textArea = new JTextArea(4, 35);
 		textArea.setEditable(false);
@@ -41,4 +44,11 @@ public class FlightDisplay extends JPanel implements Observer {
 
 	}
 
+	@Override
+	public void update(String[] info)
+	{
+		if(info.length > 1) {
+			textArea.setText(info[1]);
+		}
+	}
 }

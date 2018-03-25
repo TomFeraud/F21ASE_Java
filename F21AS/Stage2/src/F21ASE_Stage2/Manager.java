@@ -1,8 +1,5 @@
 package F21ASE_Stage2;
 
-import views.GUI;
-import views.TestGUI;
-
 /**
  * @author Tom Feraud
  * @version 1.0

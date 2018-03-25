@@ -1,14 +1,21 @@
 package F21ASE_Stage2;
 
-public class Producer extends Thread {
+import interfaces.Observer;
+import interfaces.Subject;
 
+import java.util.LinkedList;
+import java.util.List;
+
+public class Producer extends Thread implements Subject{
+
+    private List<Observer> registeredObservers = new LinkedList<Observer>();
     private PassengerQueue queue;
     private BookingList bookingList;
 
     /**
      * Constructor
-     * @param bookingList Booking list that contains passenger information
      * @param queue Passenger queue that will be filled up randomly
+     * @param bookingList
      */
     public Producer(BookingList bookingList, PassengerQueue queue) {
         this.queue = queue;
@@ -19,15 +26,49 @@ public class Producer extends Thread {
      * run the producer thread
      */
     public void run() {
-        for (int i = 0; i < bookingList.size(); i++){
-            try {
-                Thread.sleep(50); // queue in a passenger in every 50 ms
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Passenger temp = bookingList.randomPassenger();
-            queue.put(temp);
+        for (int i = 0; i < bookingList.size(); i++) {
+            queue.put();
+            notifyObservers();
         }
         queue.setDone();
+    }
+
+    /* Implement Subject interface methods*/
+
+    /**
+     * Register an observer with this subject
+     *
+     * @param obs
+     */
+    @Override
+    public void registerObserver(Observer obs)
+    {
+        registeredObservers.add(obs);
+    }
+
+    /**
+     * De-register an observer with this subject
+     *
+     * @param obs
+     */
+    @Override
+    public void removeObserver(Observer obs)
+    {
+        registeredObservers.remove(obs);
+    }
+
+    /**
+     * Inform all registered observers that there's been an update
+     */
+    @Override
+    public void notifyObservers()
+    {
+        for (Observer obs : registeredObservers)
+            obs.update();
+    }
+
+    public void notifyObservers(String[] info) {
+        for (Observer obs : registeredObservers)
+            obs.update(info);
     }
 }

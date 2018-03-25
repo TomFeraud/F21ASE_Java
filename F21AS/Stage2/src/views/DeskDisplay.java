@@ -11,40 +11,45 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import F21ASE_Stage2.Desk;
+import F21ASE_Stage2.Consumer;
+import F21ASE_Stage2.PassengerQueue;
 import interfaces.Observer;
 
 @SuppressWarnings("serial")
 public class DeskDisplay extends JPanel implements Observer {
 
-	private Desk deskData;
-	private JTextArea textArea, textAreaFlight;
+	private PassengerQueue queue;
+	private Consumer consumer;
+	private JTextArea textArea;
 
-	public DeskDisplay(Desk desk) {
+	public DeskDisplay(PassengerQueue queue, Consumer consumer) {
 
-		this.deskData = desk;
-		desk.registerObserver(this);
+		this.queue = queue;
+		this.consumer = consumer;
+		consumer.registerObserver(this);
 
-		textArea = new JTextArea(6, 45);
+		textArea = new JTextArea(6, 42);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
 		textArea.setText("This desk is open");
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.CENTER);
-		
-		
-		
-
 	}
 
 	@Override
 	public void update() {
-		String test = deskData.getDeskInfo();
-		textArea.setText(test);
-		//String info = flight.getFlightInfo();
-		//textAreaFlight.setText(info);
+//		String test = que.checkIn();
+//		textArea.setText(test);
+//		//String info = flight.getFlightInfo();
+//		//textAreaFlight.setText(info);
 
+	}
+
+	@Override
+	public void update(String[] info)
+	{
+		textArea.setText(info[0]);
 	}
 
 }

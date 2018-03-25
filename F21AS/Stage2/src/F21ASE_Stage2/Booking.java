@@ -57,8 +57,7 @@ public class Booking {
 
 	/**
 	 * Returns the booking' flight code
-	 * 
-	 * @param flightCode
+	 *
 	 */
 	public String getFlightCode() {
 		return this.flightCode;
@@ -75,8 +74,7 @@ public class Booking {
 
 	/**
 	 * Returns the booking reference code
-	 * 
-	 * @param bookingReferenceCode
+	 *
 	 */
 	public String getBookingReferenceCode() {
 		return bookingReferenceCode;
