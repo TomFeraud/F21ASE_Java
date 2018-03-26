@@ -24,10 +24,10 @@ public class DeskDisplay extends JPanel implements Observer {
 
 		consumer.registerObserver(this);
 
-		textArea = new JTextArea(6, 42);
+		textArea = new JTextArea(6, 40);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
-		textArea.setText("This desk is open");
+		textArea.setText("This desk is closed");
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.CENTER);

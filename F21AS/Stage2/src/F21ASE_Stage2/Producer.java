@@ -29,6 +29,12 @@ public class Producer extends Thread implements Subject{
     public void run() {
         for (int i = 0; i < bookingList.size(); i++) {
             queue.put();
+            try {
+				sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             notifyObservers();
         }
         queue.setDone();

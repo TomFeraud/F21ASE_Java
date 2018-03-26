@@ -1,6 +1,10 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import model.Simulation;
+import views.DeskDisplay;
 import views.MyGUI;
 
 public class TestController {
@@ -12,6 +16,5 @@ public class TestController {
 	public TestController(MyGUI view, Simulation sim) {
 		this.view = view;
 		this.sim = sim;
-	}
-
+}
 }

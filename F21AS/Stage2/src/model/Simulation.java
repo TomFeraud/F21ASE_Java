@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 import F21ASE_Stage2.*;
+import views.DeskDisplay;
 
 public class Simulation {
 	private BookingList bookingList;
@@ -19,6 +20,7 @@ public class Simulation {
 	private FlightList flightList;
 
 
+	@SuppressWarnings("deprecation")
 	public Simulation() {
 		String[] options = new String[] {"3", "2", "1"};
 		int response = JOptionPane.showOptionDialog(
@@ -52,13 +54,15 @@ public class Simulation {
 
 		this.producer = new Producer(bookingList, queue);
 		producer.start();
+		
 		consumerList = new ConsumerList();
 		for (int i = 0; i < nbrDesk; i++) {
-			Consumer consumer = new Consumer(queue, i+1, 5);
+			Consumer consumer = new Consumer(queue, i+1, 30);
 			consumerList.add(consumer);
-
 			consumerList.get(i).start();
+			
 		}
+
 	}
 
 	/**
@@ -105,4 +109,10 @@ public class Simulation {
 	public FlightList getFlightList() {
 		return flightList;
 	}
+	
+   
+    public int getNbrDesk()
+    {
+        return nbrDesk;
+    }
 }

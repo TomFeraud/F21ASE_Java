@@ -4,10 +4,13 @@ import model.Simulation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MyGUI extends JFrame {
 
 	private JTextField text = new JTextField();
+	private Simulation sim;
 
 	/**
 	 * Constructor
@@ -22,7 +25,7 @@ public class MyGUI extends JFrame {
 		setupCenterPanel(sim);
 		setupSouthPanel(sim);
 
-		setSize(1275, 600);
+		setSize(1200, 600);
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
@@ -53,22 +56,23 @@ public class MyGUI extends JFrame {
 	 * @param sim Simulation
 	 */
 	private void setupCenterPanel(Simulation sim) {
+	
 
 		JPanel deskInfo = new JPanel();
-		deskInfo.setLayout(new GridLayout(1, 3));
+		deskInfo.setLayout(new FlowLayout());
 
-		for (int i = 0; i < sim.getConsumerList().getSize(); i++) {
-
+		//for (int i = 0; i < sim.getConsumerList().getSize(); i++) {			
+		for (int i = 0; i < sim.getNbrDesk(); i++) {
 				deskInfo.add(new DeskDisplay(sim.getConsumerList().get(i)));
 		}
+		
 		
 		// set up the whole center panel containing the previous elements
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new GridLayout(1, 1));
 		centerPanel.add(deskInfo);
 		this.add(centerPanel, BorderLayout.CENTER);
-
-	}
+		}
 
 	/**
 	 * Setup South Panel
@@ -76,7 +80,7 @@ public class MyGUI extends JFrame {
 	 * @param sim Simulation
 	 */
 	private void setupSouthPanel(Simulation sim) {
- 
+		this.sim = sim;
 		JPanel flightInfo = new JPanel();
 		flightInfo.setLayout(new GridLayout(2, 3));
 		
@@ -114,6 +118,7 @@ public class MyGUI extends JFrame {
 	public String getText() {
 		return text.getText();
 	}
+	
 }
 
 
