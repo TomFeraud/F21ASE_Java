@@ -69,9 +69,7 @@ public class Consumer extends Thread implements Subject {
     	else
     	{
     		randomNbr = r.nextInt((3000 - 1000) + 1) + 1000;
-
     	}
-        
     }
 
     
@@ -94,7 +92,7 @@ public class Consumer extends Thread implements Subject {
                 e.printStackTrace();
             }
             // check-in passengers until the queue is empty
-            while (queue.getSize() >= 0) {
+            while (queue.getSize() > 0) {
                 // close the desk after the given time
                 if((System.currentTimeMillis()- startTime) < endIn*1000) {
                     // notify DeskDisplay and FlightDisplay
@@ -113,6 +111,12 @@ public class Consumer extends Thread implements Subject {
                     log.write("Desk [" + deskNo + "] is closed\n");
                     return;
                 }
+            }
+            if(queue.getSize()==0)
+            {
+            	 notifyObservers(new String[] {"Desk [" + deskNo + "] is closed"});
+                 System.out.println("Desk [" + deskNo + "] is closed\n");
+                 log.write("Desk [" + deskNo + "] is closed\n");
             }
         }
     }
