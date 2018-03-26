@@ -25,7 +25,7 @@ public class Log {
 	 * @return uniqueInstance
 	 */
 
-	public static synchronized Log getInstance() {
+	public static Log getInstance() {
 		if (uniqueInstance == null) // only if no instance
 			synchronized (Log.class) { // lock block
 				if (uniqueInstance == null) // and re-check

@@ -25,7 +25,7 @@ public class FlightList {
 	/**
 	 * Add a flight to our flight List, return true if well added, false otherwise
 	 * 
-	 * @param flight
+	 * @param f flight
 	 * @return boolean
 	 */
 	public boolean addFlight(Flight f) {

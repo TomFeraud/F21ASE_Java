@@ -165,19 +165,6 @@ public class BookingList {
 	}
 
 	/////////// TEST STAGE 2
-	public Passenger randomPasenger() {
-		Random random = new Random();
-		int r = random.nextInt(bookingList.size());
-
-		// System.out.println("Random");
-		// System.out.println(bookingList.size());
-		// System.out.println(r);
-		// System.out.println(findPassengerByBookingReference(bookingList.keySet().
-		// toArray()[r]).getFullName());
-
-		return findPassengerByBookingReference(bookingList.keySet().toArray()[r]);
-	}
-
 	/**
 	 * produce a random passenger that has never been produced before
 	 * 

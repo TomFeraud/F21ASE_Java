@@ -18,11 +18,6 @@ public class Simulation {
 	private int nbrFlight;
 	private FlightList flightList;
 
-	// TEST
-	private Flight flight1;
-
-	// set true when times stops
-	private boolean finished = false;
 
 	public Simulation() {
 		String[] options = new String[] {"3", "2", "1"};
