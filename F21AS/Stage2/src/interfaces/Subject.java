@@ -1,11 +1,11 @@
 package interfaces;
 
 /**
- * The Subject part of the Observer pattern.
- * All classes implementing this interface MUST have these methods.
+ * The Subject part of the Observer pattern. All classes implementing this
+ * interface MUST have these methods.
  */
 public interface Subject {
-	
+
 	/**
 	 * Register an observer with this subject
 	 */
@@ -23,6 +23,7 @@ public interface Subject {
 
 	/**
 	 * Inform all registered observers that there's been an update
+	 * 
 	 * @param info
 	 */
 	void notifyObservers(String[] info);

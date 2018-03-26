@@ -15,11 +15,13 @@ import interfaces.Observer;
 public class FlightDisplay extends JPanel implements Observer {
 	private JTextArea textArea;
 	private Flight flight;
+
 	/**
 	 * Constructor
 	 *
-	 * @param flight Flight
-	 * @param consumerList Consumer List
+	 * @param flight
+	 * @param consumerList
+	 * 
 	 */
 	public FlightDisplay(Flight flight, ConsumerList consumerList) {
 		this.flight = flight;
@@ -30,8 +32,8 @@ public class FlightDisplay extends JPanel implements Observer {
 		textArea = new JTextArea(4, 35);
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Arial", Font.PLAIN, 10));
-		textArea.setText("Check in for flight " + flight.getFlightCode()+ " to " + flight.getDestination() +" open\n"
-				+ "Passengers please make your way to the gate" );
+		textArea.setText("Check in for flight " + flight.getFlightCode() + " to " + flight.getDestination() + " open\n"
+				+ "Passengers please make your way to the gate");
 		this.add(textArea);
 		JScrollPane scrollList = new JScrollPane(textArea);
 		this.add(scrollList, BorderLayout.SOUTH);
@@ -46,21 +48,21 @@ public class FlightDisplay extends JPanel implements Observer {
 	 * Not Used in this class
 	 */
 	@Override
-	public void update() {}
+	public void update() {
+	}
 
 	/**
-	 * Update Observer
-	 * Only the second element of the array is used to
-	 * Update the flight capacity
+	 * Update Observer Only the second element of the array is used to Update the
+	 * flight capacity
 	 *
-	 * @param info Info contains two elements: passenger info and flight info
+	 * @param info
+	 *            Info contains two elements: passenger info and flight info
 	 */
 	@Override
-	public void update(String[] info)
-	{
+	public void update(String[] info) {
 		// info.length < 1 means desks are closed
 		// then there is no need to update flight capacity
-		if(info.length > 1) {
+		if (info.length > 1) {
 			String flightCode = info[1];
 			// update only if the corresponding flight changes
 			if (Objects.equals(flightCode, flight.getFlightCode())) {

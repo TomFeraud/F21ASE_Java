@@ -19,22 +19,13 @@ public class Simulation {
 	private int nbrFlight;
 	private FlightList flightList;
 
-
 	@SuppressWarnings("deprecation")
 	public Simulation() {
-		String[] options = new String[] {"3", "2", "1"};
-		int response = JOptionPane.showOptionDialog(
-				null,
-				"Please select a number of check in desks\n", "Desks",
-		        JOptionPane.DEFAULT_OPTION,
-				JOptionPane.PLAIN_MESSAGE,
-		        null,
-				options,
-				null
-		);
+		String[] options = new String[] { "3", "2", "1" };
+		int response = JOptionPane.showOptionDialog(null, "Please select a number of check in desks\n", "Desks",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
 
-		if (response == -1)
-		{
+		if (response == -1) {
 			System.exit(0);
 		}
 		nbrDesk = 3 - response;
@@ -45,7 +36,7 @@ public class Simulation {
 		// read flight list
 		flightList = new FlightList();
 		flightList.readFile("flight.txt");
-		
+
 		this.nbrFlight = flightList.getTotalNumberofFlights();
 
 		//////////// New Multithreading Classes
@@ -54,13 +45,13 @@ public class Simulation {
 
 		this.producer = new Producer(bookingList, queue);
 		producer.start();
-		
+
 		consumerList = new ConsumerList();
 		for (int i = 0; i < nbrDesk; i++) {
-			Consumer consumer = new Consumer(queue, i+1, 30);
+			Consumer consumer = new Consumer(queue, i + 1, 30);
 			consumerList.add(consumer);
 			consumerList.get(i).start();
-			
+
 		}
 
 	}
@@ -109,10 +100,13 @@ public class Simulation {
 	public FlightList getFlightList() {
 		return flightList;
 	}
-	
-   
-    public int getNbrDesk()
-    {
-        return nbrDesk;
-    }
+
+	/**
+	 * Gets the number of desk
+	 * 
+	 * @return nbrDesk
+	 */
+	public int getNbrDesk() {
+		return nbrDesk;
+	}
 }

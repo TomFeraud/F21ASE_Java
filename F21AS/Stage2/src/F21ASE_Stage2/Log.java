@@ -67,15 +67,4 @@ public class Log {
 		}
 	}
 
-	// TEST the Log class
-//	public static void main(String[] args) {
-//		Log log = Log.getInstance();
-//		log.write("add passenger");
-//
-//		 long startTime = System.currentTimeMillis(); int i = 2; while(i > 1) { if
-//		 (System.currentTimeMillis() - startTime > 5000) {
-//		 log.write("check in passenger"); return; } else { log.write("waiting"); } }
-//
-//	}
-
 }

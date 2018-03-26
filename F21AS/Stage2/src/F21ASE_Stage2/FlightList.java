@@ -25,7 +25,8 @@ public class FlightList {
 	/**
 	 * Add a flight to our flight List, return true if well added, false otherwise
 	 * 
-	 * @param f flight
+	 * @param f
+	 *            flight
 	 * @return boolean
 	 */
 	public boolean addFlight(Flight f) {
@@ -139,10 +140,13 @@ public class FlightList {
 	/**
 	 * Get flight by its index
 	 *
-	 * @param i index
+	 * @param i
+	 *            index
 	 * @return
 	 */
-	public Flight getFlightByIndex(int i) {return flightList.get(i);}
+	public Flight getFlightByIndex(int i) {
+		return flightList.get(i);
+	}
 
 	/**
 	 * print flight reports into a text file

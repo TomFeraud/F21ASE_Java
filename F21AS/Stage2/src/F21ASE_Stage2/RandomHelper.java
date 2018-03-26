@@ -35,6 +35,11 @@ public class RandomHelper {
 		return randomInt;
 	}
 
+	/**
+	 * Gets random dimension
+	 * 
+	 * @return an array containing a random length, width and height
+	 */
 	public static double[] getRandomDimensions() {
 		Random random = new Random();
 		double length = random.nextDouble() * 4 + 1;
@@ -47,6 +52,11 @@ public class RandomHelper {
 		return new double[] { length, width, height };
 	}
 
+	/**
+	 * Gets a random weight
+	 * 
+	 * @return a random value
+	 */
 	public static double getRandomWeight() {
 		Random random = new Random();
 		return random.nextDouble() * 50;

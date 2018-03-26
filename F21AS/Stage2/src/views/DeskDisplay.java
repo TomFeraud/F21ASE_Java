@@ -18,7 +18,8 @@ public class DeskDisplay extends JPanel implements Observer {
 	/**
 	 * Constructor
 	 *
-	 * @param consumer consumer
+	 * @param consumer
+	 *            consumer
 	 */
 	public DeskDisplay(Consumer consumer) {
 
@@ -41,18 +42,18 @@ public class DeskDisplay extends JPanel implements Observer {
 	 * Not Used in this class
 	 */
 	@Override
-	public void update() {}
+	public void update() {
+	}
 
 	/**
-	 * Update Observer
-	 * Only the first element of the array is used to
-	 * Update the current passenger on the check-in desk
+	 * Update Observer Only the first element of the array is used to Update the
+	 * current passenger on the check-in desk
 	 *
-	 * @param info Info contains two elements: passenger info and flight info
+	 * @param info
+	 *            Info contains two elements: passenger info and flight info
 	 */
 	@Override
-	public void update(String[] info)
-	{
+	public void update(String[] info) {
 		textArea.setText(info[0]);
 	}
 

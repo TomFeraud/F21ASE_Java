@@ -194,16 +194,21 @@ public class BookingList {
 		return null;
 	}
 
+	/**
+	 * Return the size of the booking list
+	 * 
+	 * @return size
+	 */
 	public int size() {
 		return bookingList.size();
 	}
 
-	/*
-	 * public void printBookingtList() { for (Map.Entry<String, Booking> entry :
-	 * bookingList.entrySet()) {
-	 * System.out.println(entry.getValue().getFlightCode()); } }
+	/**
+	 * Get the booking reference code and flight code of a passenger
+	 * 
+	 * @param name
+	 * @return a String containing the passenger info
 	 */
-
 	public String getPassengerInfo(String name) {
 		String info = "";
 		for (Booking entry : bookingList.values()) {
@@ -216,6 +221,12 @@ public class BookingList {
 		return info;
 	}
 
+	/**
+	 * Get the flight code of a passenger
+	 * 
+	 * @param name
+	 * @return flightCode
+	 */
 	public String getPassengerFlightCode(String name) {
 		String flightcode = "";
 		for (Booking entry : bookingList.values()) {
@@ -226,6 +237,12 @@ public class BookingList {
 		return flightcode;
 	}
 
+	/**
+	 * Get the booking reference code of a passenger
+	 * 
+	 * @param name
+	 * @return bookref
+	 */
 	public String getPassengerBookingRef(String name) {
 		String bookref = "";
 		for (Booking entry : bookingList.values()) {
@@ -236,6 +253,12 @@ public class BookingList {
 		return bookref;
 	}
 
+	/**
+	 * Check if the passenger has check in yet
+	 * 
+	 * @param name
+	 * @return true if yes, false otherwise
+	 */
 	public boolean hasPassengerCheckedIn(String name) {
 		for (Map.Entry<String, Booking> entry : bookingList.entrySet()) {
 			Booking value = entry.getValue();
@@ -245,7 +268,5 @@ public class BookingList {
 		}
 		return false;
 	}
-	
-	
 
 }

@@ -161,7 +161,6 @@ public class Passenger {
 	
 
 	
-	
 	/////STAGE 2
 	
 	public String toString() {

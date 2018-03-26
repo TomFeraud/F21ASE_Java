@@ -1,5 +1,6 @@
 package F21ASE_Stage2;
 
+
 /**
  * @author Ombeline Gabriel
  * @version 1.0
@@ -186,14 +187,6 @@ public class Baggage {
     {
         this.excessBagFee = excessBagFee;
     }
-
-	/*
-    public String toString() {
-		return "\n Baggage's weight: " + getWeight() + "kg, baggage dimension:" + calculateDimT()
-				+ "M^3, excess baggage fee: £" + this.excessBagFee;
-
-	}
-	 */
 
     public String toString()
     {

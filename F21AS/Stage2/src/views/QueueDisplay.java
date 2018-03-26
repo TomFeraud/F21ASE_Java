@@ -23,9 +23,12 @@ public class QueueDisplay extends JPanel implements Observer {
 	/**
 	 * Constructor
 	 *
-	 * @param queue Passenger Queue
-	 * @param producer Producer
-	 * @param consumerList Consumer
+	 * @param queue
+	 *            Passenger Queue
+	 * @param producer
+	 *            Producer
+	 * @param consumerList
+	 *            Consumer
 	 */
 	public QueueDisplay(PassengerQueue queue, Producer producer, ConsumerList consumerList) {
 		JLabel nbOfPeople = new JLabel("Number of people currently in the queue: ");
@@ -47,7 +50,7 @@ public class QueueDisplay extends JPanel implements Observer {
 		this.add(testText);
 		JScrollPane scrollList = new JScrollPane(testText);
 		this.add(scrollList);
-		
+
 	}
 
 	/* Implement Observer */
@@ -57,21 +60,20 @@ public class QueueDisplay extends JPanel implements Observer {
 	 *
 	 * Not Used in this class
 	 *
-	 * @param info Info
+	 * @param info
+	 *            Info
 	 */
 	@Override
-	public void update(String[] info) {}
+	public void update(String[] info) {
+	}
 
 	/**
-	 * Update Observer
-	 * Update the current queue's content
-	 * When adding random passenger to the queue
-	 * And checking passenger off the queue
+	 * Update Observer Update the current queue's content When adding random
+	 * passenger to the queue And checking passenger off the queue
 	 *
 	 */
 	@Override
-	public void update()
-	{
+	public void update() {
 		String test = queue.getQueuePassengers();
 		testText.setText(test);
 		queueSize.setText(String.valueOf(queue.getSize()));
