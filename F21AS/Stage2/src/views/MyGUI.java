@@ -81,24 +81,26 @@ public class MyGUI extends JFrame {
 		flightInfo.setLayout(new GridLayout(2, 3));
 		
 		for (int i = 0; i < sim.getNbrFlight(); i++) {
-			if (i == 0) {
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
-			if (i == 1) {
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
-			if (i == 2) {
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
-			if (i == 3){
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
-			if (i == 4){
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
-			if (i == 5){
-				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
-			}
+//			if (i == 0) {
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+//			if (i == 1) {
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+//			if (i == 2) {
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+//			if (i == 3){
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+//			if (i == 4){
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+//			if (i == 5){
+//				flightInfo.add(new FlightDisplay(sim.getFlightList().findByFlightCode("FR1286"), sim.getConsumerList()));
+//			}
+			flightInfo.add(new FlightDisplay(sim.getFlightList().getFlightByIndex(i), sim.getConsumerList()));
+
 		}
 
 		// set up the whole north panel containing the previous elements

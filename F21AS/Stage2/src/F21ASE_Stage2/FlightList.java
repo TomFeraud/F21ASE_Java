@@ -137,6 +137,14 @@ public class FlightList {
 	}
 
 	/**
+	 * Get flight by its index
+	 *
+	 * @param i index
+	 * @return
+	 */
+	public Flight getFlightByIndex(int i) {return flightList.get(i);}
+
+	/**
 	 * print flight reports into a text file
 	 * 
 	 * @param filePath

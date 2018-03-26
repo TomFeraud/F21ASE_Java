@@ -46,9 +46,9 @@ public class PassengerQueue {
         //check-in passenger
         String passengerInfo = checkIn(passenger, deskNo);
         // get current flight info
-        String flightInfo = getFlightInfo(passenger);
+        String flightCode = getFlightCode(passenger);
 
-        return new String[] {passengerInfo, flightInfo};
+        return new String[] {passengerInfo, flightCode};
     }
 
     /**
@@ -117,14 +117,13 @@ public class PassengerQueue {
      * @param passenger Passenger
      * @return flight information
      */
-    private String getFlightInfo(Passenger passenger) {
+    private String getFlightCode(Passenger passenger) {
         // get passenger's flight
         Flight flight = flightList.findByFlightCode(bookingList.getPassengerFlightCode(passenger.getFullName()));
         // add passenger to the corresponding flight
         flight.addFlightPassenger(passenger.getBaggage().getWeight(), passenger.getBaggage().calculateDimT());
-
-        // return the flight information after adding the passenger in
-        return flight.getFlightInfo();
+        // return the flight code
+        return flight.getFlightCode();
     }
 
     /**

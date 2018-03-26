@@ -2,6 +2,7 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.util.Objects;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,7 +14,7 @@ import interfaces.Observer;
 
 public class FlightDisplay extends JPanel implements Observer {
 	private JTextArea textArea;
-
+	private Flight flight;
 	/**
 	 * Constructor
 	 *
@@ -21,7 +22,7 @@ public class FlightDisplay extends JPanel implements Observer {
 	 * @param consumerList Consumer List
 	 */
 	public FlightDisplay(Flight flight, ConsumerList consumerList) {
-
+		this.flight = flight;
 		for (int i = 0; i < consumerList.getSize(); i++) {
 			consumerList.get(i).registerObserver(this);
 		}
@@ -60,7 +61,11 @@ public class FlightDisplay extends JPanel implements Observer {
 		// info.length < 1 means desks are closed
 		// then there is no need to update flight capacity
 		if(info.length > 1) {
-			textArea.setText(info[1]);
+			String flightCode = info[1];
+			// update only if the corresponding flight changes
+			if (Objects.equals(flightCode, flight.getFlightCode())) {
+				textArea.setText(flight.getFlightInfo());
+			}
 		}
 	}
 }
