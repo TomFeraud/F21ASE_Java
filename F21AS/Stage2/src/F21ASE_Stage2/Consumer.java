@@ -45,7 +45,7 @@ public class Consumer extends Thread implements Subject {
         String[] options = new String[] {"Fast", "Normal", "Slow"};
 		int response = JOptionPane.showOptionDialog(
 				null,
-				"Please select the speed in which Desk " + this.getDeskNo() + " processes passengers\n", "Speed",
+				"Please select the speed at which Desk " + this.getDeskNo() + " processes passengers\n", "Speed",
 		        JOptionPane.DEFAULT_OPTION,
 				JOptionPane.PLAIN_MESSAGE,
 		        null,
